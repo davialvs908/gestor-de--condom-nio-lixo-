@@ -59,7 +59,8 @@ async function loadRealDashboardData(userData) {
         // Assumindo condominium_id = 1 para demo, ou buscar do userData
         const condominiumId = userData.condominium_id || 1;
         
-        const response = await fetch(`http://localhost:5000/api/dashboard/${condominiumId}`, {
+        const apiBaseUrl = getApiBaseUrl();
+        const response = await fetch(`${apiBaseUrl}/api/dashboard/${condominiumId}`, {
             method: 'GET',
             credentials: 'include',
             headers: {
@@ -80,6 +81,10 @@ async function loadRealDashboardData(userData) {
         }
     } catch (error) {
         console.error('❌ Erro na API do dashboard:', error);
+        
+        // Se API não estiver disponível, usar dados demo
+        console.warn('API não disponível, carregando dados demo...');
+        loadDemoData();
     }
 }
 
@@ -556,7 +561,7 @@ function logout() {
     
     // Função para confirmar logout
     window.confirmLogout = function() {
-        sessionStorage.removeItem('smarttrash_user');
+    sessionStorage.removeItem('smarttrash_user');
         localStorage.removeItem('smarttrash_user');
         
         // Mostrar mensagem de logout
@@ -571,7 +576,7 @@ function logout() {
         document.body.appendChild(logoutMessage);
         
         setTimeout(() => {
-            window.location.href = 'login.html';
+    window.location.href = 'login.html';
         }, 1000);
     };
     
@@ -1324,3 +1329,83 @@ function toggleNotifications() {
 // Export new functions
 window.createDemoNotifications = createDemoNotifications;
 window.toggleNotifications = toggleNotifications;
+
+// Função para detectar URL da API (importada do login.js)
+function getApiBaseUrl() {
+    // Se estiver rodando localmente
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        return 'http://localhost:5000';
+    }
+    
+    // Se estiver hospedado, usar a mesma origem
+    return window.location.origin;
+}
+
+// Carregar dados demo quando API não estiver disponível
+function loadDemoData() {
+    const demoData = {
+        stats: {
+            total_containers: 12,
+            active_containers: 10,
+            critical_containers: 2,
+            collections_today: 5,
+            efficiency_percentage: 87.5
+        },
+        containers: [
+            {
+                id: 1,
+                location: 'Bloco A - Térreo',
+                fill_level: 95,
+                status: 'critical',
+                last_collection: '2024-01-15 08:30:00',
+                sensor_battery: 85
+            },
+            {
+                id: 2,
+                location: 'Bloco B - 2º Andar',
+                fill_level: 78,
+                status: 'warning',
+                last_collection: '2024-01-15 10:15:00',
+                sensor_battery: 92
+            },
+            {
+                id: 3,
+                location: 'Bloco C - Garagem',
+                fill_level: 45,
+                status: 'normal',
+                last_collection: '2024-01-15 07:45:00',
+                sensor_battery: 88
+            }
+        ],
+        collections: [
+            {
+                id: 1,
+                container_id: 1,
+                scheduled_time: '2024-01-16 09:00:00',
+                status: 'pending',
+                priority: 'high'
+            },
+            {
+                id: 2,
+                container_id: 2,
+                scheduled_time: '2024-01-16 14:30:00',
+                status: 'scheduled',
+                priority: 'medium'
+            }
+        ]
+    };
+    
+    // Atualizar interface com dados demo
+    updateDashboardWithRealData(demoData);
+    
+    // Criar notificação sobre modo demo
+    createNotification(
+        'Modo Demonstração Ativo',
+        'Sistema funcionando com dados de exemplo. Para dados reais, configure a API.',
+        'info'
+    );
+}
+
+// Exportar função globalmente
+window.getApiBaseUrl = getApiBaseUrl;
+window.loadDemoData = loadDemoData;

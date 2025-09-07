@@ -24,8 +24,11 @@ document.addEventListener('DOMContentLoaded', function() {
         showLoading();
         
         try {
+            // Detectar ambiente (local ou hospedado)
+            const apiBaseUrl = getApiBaseUrl();
+            
             // Real API call to SQLite backend
-            const response = await fetch('http://localhost:5000/api/login', {
+            const response = await fetch(`${apiBaseUrl}/api/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -64,9 +67,20 @@ document.addEventListener('DOMContentLoaded', function() {
             hideLoading();
             console.error('Erro na API:', error);
             
-            // Verificar tipo de erro
+            // Verificar tipo de erro e tentar modo demo se API não estiver disponível
             if (error.name === 'TypeError' && error.message.includes('fetch')) {
-                showErrorMessage('Erro de conexão. Verifique se o servidor está rodando e tente novamente.');
+                console.warn('API não disponível, tentando modo demo...');
+                
+                // Tentar login demo
+                if (tryDemoLogin(email, password)) {
+                    hideLoading();
+                    showSuccessMessage('Login demo realizado com sucesso!');
+                    setTimeout(() => {
+                        window.location.href = 'dashboard.html';
+                    }, 1000);
+                } else {
+                    showErrorMessage('Credenciais inválidas. Use: demo@smarttrash.com.br / demo123');
+                }
             } else {
                 showErrorMessage('Erro de rede. Tente novamente em alguns segundos.');
             }
@@ -103,7 +117,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Remover confirmação de senha antes de enviar
                 delete data.password_confirm;
                 
-                const response = await fetch('http://localhost:5000/api/register', {
+                const response = await fetch(`${getApiBaseUrl()}/api/register`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -262,6 +276,55 @@ function hideLoading() {
     const overlay = document.getElementById('loadingOverlay');
     overlay.style.display = 'none';
 }
+
+// Função para detectar URL da API baseada no ambiente
+function getApiBaseUrl() {
+    // Se estiver rodando localmente
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        return 'http://localhost:5000';
+    }
+    
+    // Se estiver hospedado, usar a mesma origem ou URL específica da API
+    // Para GitHub Pages ou outros hosts estáticos, você pode configurar uma API externa
+    return window.location.origin; // ou 'https://sua-api-hospedada.com'
+}
+
+// Função para tentar login demo quando API não estiver disponível
+function tryDemoLogin(email, password) {
+    const demoCredentials = [
+        { email: 'demo@smarttrash.com.br', password: 'demo123' },
+        { email: 'davialves.20@gmail.com', password: '123456' },
+        { email: 'admin@smarttrash.com', password: 'admin123' }
+    ];
+    
+    const validCredential = demoCredentials.find(cred => 
+        cred.email === email && cred.password === password
+    );
+    
+    if (validCredential) {
+        // Criar dados de usuário demo
+        const userData = {
+            id: 1,
+            name: 'DAVI ALMEIDA DOS SANTOS ALVES',
+            email: validCredential.email,
+            role: 'gestor',
+            condominium: 'SmartTrash',
+            condominium_id: 1,
+            mode: 'demo'
+        };
+        
+        // Salvar no sessionStorage
+        sessionStorage.setItem('smarttrash_user', JSON.stringify(userData));
+        
+        return true;
+    }
+    
+    return false;
+}
+
+// Exportar funções globalmente
+window.getApiBaseUrl = getApiBaseUrl;
+window.tryDemoLogin = tryDemoLogin;
 
 // Message functions
 function showSuccessMessage(message) {
