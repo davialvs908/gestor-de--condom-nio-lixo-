@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Empresas - SmartTrash</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-brand">
+                    <img src="logo-smarttrash.svg" alt="SmartTrash" class="logo">
+                    <span class="brand-text">SmartTrash</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="index.html#solucao">Solução</a></li>
+                    <li><a href="gestores.html">Para Gestores</a></li>
+                    <li><a href="empresas.html" class="active">Para Empresas</a></li>
+                    <li><a href="gestao-condominial.html">Gestão Condominial</a></li>
+                    <li><a href="login.html" class="nav-login-btn">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </a></li>
+                </ul>
+                <div class="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section empresas-hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Soluções SmartTrash para <span class="highlight">Empresas</span></h1>
+                    <p class="hero-subtitle">
+                        Transforme a gestão de resíduos da sua empresa com tecnologia IoT avançada. 
+                        Reduza custos, otimize operações e contribua para um futuro sustentável.
+                    </p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary" onclick="openContactModal()">
+                            <i class="fas fa-rocket"></i>
+                            Solicitar Demonstração
+                        </button>
+                        <button class="btn btn-outline" onclick="scrollToSection('beneficios')">
+                            <i class="fas fa-info-circle"></i>
+                            Saiba Mais
+                        </button>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="hero-visual">
+                        <div class="smart-container">
+                            <i class="fas fa-trash-alt"></i>
+                            <div class="sensor-indicator active"></div>
+                        </div>
+                        <div class="data-flow">
+                            <div class="data-point"></div>
+                            <div class="data-point"></div>
+                            <div class="data-point"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>60%</h3>
+                        <p>Redução de Custos Operacionais</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>45%</h3>
+                        <p>Menos Impacto Ambiental</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>24/7</h3>
+                        <p>Monitoramento Contínuo</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>500+</h3>
+                        <p>Empresas Atendidas</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="beneficios" class="benefits-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Benefícios para sua Empresa</h2>
+                <p>Descubra como o SmartTrash pode revolucionar a gestão de resíduos do seu negócio</p>
+            </div>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <h3>Redução de Custos</h3>
+                    <p>Otimize rotas de coleta e reduza gastos desnecessários com monitoramento inteligente dos níveis de resíduos.</p>
+                    <ul class="benefit-features">
+                        <li><i class="fas fa-check"></i> Coletas apenas quando necessário</li>
+                        <li><i class="fas fa-check"></i> Redução de mão de obra</li>
+                        <li><i class="fas fa-check"></i> Economia em combustível</li>
+                    </ul>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>Análises Avançadas</h3>
+                    <p>Relatórios detalhados e insights em tempo real para tomada de decisões estratégicas baseadas em dados.</p>
+                    <ul class="benefit-features">
+                        <li><i class="fas fa-check"></i> Dashboard em tempo real</li>
+                        <li><i class="fas fa-check"></i> Relatórios personalizados</li>
+                        <li><i class="fas fa-check"></i> Previsões inteligentes</li>
+                    </ul>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Sustentabilidade</h3>
+                    <p>Contribua para um futuro mais sustentável com gestão eficiente e redução do impacto ambiental.</p>
+                    <ul class="benefit-features">
+                        <li><i class="fas fa-check"></i> Redução de emissões</li>
+                        <li><i class="fas fa-check"></i> Otimização de recursos</li>
+                        <li><i class="fas fa-check"></i> Relatórios de impacto</li>
+                    </ul>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <h3>Alertas Inteligentes</h3>
+                    <p>Receba notificações automáticas sobre o status dos contêineres e mantenha operações sempre eficientes.</p>
+                    <ul class="benefit-features">
+                        <li><i class="fas fa-check"></i> Alertas personalizáveis</li>
+                        <li><i class="fas fa-check"></i> Múltiplos canais de comunicação</li>
+                        <li><i class="fas fa-check"></i> Histórico de eventos</li>
+                    </ul>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Acesso Mobile</h3>
+                    <p>Gerencie tudo através do seu smartphone ou tablet, com acesso completo às funcionalidades da plataforma.</p>
+                    <ul class="benefit-features">
+                        <li><i class="fas fa-check"></i> App nativo iOS/Android</li>
+                        <li><i class="fas fa-check"></i> Interface responsiva</li>
+                        <li><i class="fas fa-check"></i> Sincronização em tempo real</li>
+                    </ul>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                    <h3>Integração Completa</h3>
+                    <p>Integre facilmente com seus sistemas existentes através de APIs robustas e documentação completa.</p>
+                    <ul class="benefit-features">
+                        <li><i class="fas fa-check"></i> APIs RESTful</li>
+                        <li><i class="fas fa-check"></i> Webhooks personalizados</li>
+                        <li><i class="fas fa-check"></i> Suporte técnico dedicado</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section class="solutions-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Soluções por Segmento</h2>
+                <p>Oferecemos soluções personalizadas para diferentes tipos de empresas</p>
+            </div>
+            
+            <div class="solutions-tabs">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" data-tab="retail">
+                        <i class="fas fa-store"></i>
+                        Varejo
+                    </button>
+                    <button class="tab-btn" data-tab="hospitality">
+                        <i class="fas fa-utensils"></i>
+                        Hospitalidade
+                    </button>
+                    <button class="tab-btn" data-tab="corporate">
+                        <i class="fas fa-building"></i>
+                        Corporativo
+                    </button>
+                    <button class="tab-btn" data-tab="industrial">
+                        <i class="fas fa-industry"></i>
+                        Industrial
+                    </button>
+                </div>
+
+                <div class="tab-content">
+                    <div class="tab-pane active" id="retail">
+                        <div class="solution-content">
+                            <div class="solution-text">
+                                <h3>Soluções para Varejo</h3>
+                                <p>Otimize a gestão de resíduos em lojas, shoppings e centros comerciais com monitoramento inteligente.</p>
+                                <ul>
+                                    <li><i class="fas fa-check"></i> Monitoramento de múltiplas lojas</li>
+                                    <li><i class="fas fa-check"></i> Gestão centralizada</li>
+                                    <li><i class="fas fa-check"></i> Relatórios por unidade</li>
+                                    <li><i class="fas fa-check"></i> Alertas personalizados</li>
+                                </ul>
+                            </div>
+                            <div class="solution-image">
+                                <i class="fas fa-store solution-icon"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="hospitality">
+                        <div class="solution-content">
+                            <div class="solution-text">
+                                <h3>Soluções para Hospitalidade</h3>
+                                <p>Mantenha hotéis, restaurantes e eventos sempre limpos com gestão eficiente de resíduos.</p>
+                                <ul>
+                                    <li><i class="fas fa-check"></i> Monitoramento de áreas comuns</li>
+                                    <li><i class="fas fa-check"></i> Gestão de resíduos orgânicos</li>
+                                    <li><i class="fas fa-check"></i> Alertas de emergência</li>
+                                    <li><i class="fas fa-check"></i> Integração com sistemas hoteleiros</li>
+                                </ul>
+                            </div>
+                            <div class="solution-image">
+                                <i class="fas fa-utensils solution-icon"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="corporate">
+                        <div class="solution-content">
+                            <div class="solution-text">
+                                <h3>Soluções Corporativas</h3>
+                                <p>Gerencie resíduos em escritórios e complexos corporativos com tecnologia de ponta.</p>
+                                <ul>
+                                    <li><i class="fas fa-check"></i> Gestão multi-edifícios</li>
+                                    <li><i class="fas fa-check"></i> Relatórios de sustentabilidade</li>
+                                    <li><i class="fas fa-check"></i> Integração com facilities</li>
+                                    <li><i class="fas fa-check"></i> Dashboard executivo</li>
+                                </ul>
+                            </div>
+                            <div class="solution-image">
+                                <i class="fas fa-building solution-icon"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="industrial">
+                        <div class="solution-content">
+                            <div class="solution-text">
+                                <h3>Soluções Industriais</h3>
+                                <p>Monitore resíduos industriais com sensores especializados e conformidade regulatória.</p>
+                                <ul>
+                                    <li><i class="fas fa-check"></i> Monitoramento de resíduos perigosos</li>
+                                    <li><i class="fas fa-check"></i> Compliance regulatório</li>
+                                    <li><i class="fas fa-check"></i> Rastreabilidade completa</li>
+                                    <li><i class="fas fa-check"></i> Integração com ERP</li>
+                                </ul>
+                            </div>
+                            <div class="solution-image">
+                                <i class="fas fa-industry solution-icon"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Planos Empresariais</h2>
+                <p>Escolha o plano ideal para o porte da sua empresa</p>
+            </div>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Starter</h3>
+                        <p>Para pequenas empresas</p>
+                    </div>
+                    <div class="pricing-price">
+                        <span class="price">R$ 299</span>
+                        <span class="period">/mês</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Até 10 contêineres</li>
+                        <li><i class="fas fa-check"></i> Dashboard básico</li>
+                        <li><i class="fas fa-check"></i> Alertas por email</li>
+                        <li><i class="fas fa-check"></i> Relatórios mensais</li>
+                        <li><i class="fas fa-check"></i> Suporte por email</li>
+                    </ul>
+                    <button class="btn btn-outline" onclick="openContactModal('starter')">
+                        Solicitar Proposta
+                    </button>
+                </div>
+
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">Mais Popular</div>
+                    <div class="pricing-header">
+                        <h3>Professional</h3>
+                        <p>Para empresas em crescimento</p>
+                    </div>
+                    <div class="pricing-price">
+                        <span class="price">R$ 599</span>
+                        <span class="period">/mês</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Até 50 contêineres</li>
+                        <li><i class="fas fa-check"></i> Dashboard avançado</li>
+                        <li><i class="fas fa-check"></i> Múltiplos canais de alerta</li>
+                        <li><i class="fas fa-check"></i> Relatórios personalizados</li>
+                        <li><i class="fas fa-check"></i> API básica</li>
+                        <li><i class="fas fa-check"></i> Suporte prioritário</li>
+                    </ul>
+                    <button class="btn btn-primary" onclick="openContactModal('professional')">
+                        Solicitar Proposta
+                    </button>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Enterprise</h3>
+                        <p>Para grandes corporações</p>
+                    </div>
+                    <div class="pricing-price">
+                        <span class="price">Personalizado</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Contêineres ilimitados</li>
+                        <li><i class="fas fa-check"></i> Dashboard personalizado</li>
+                        <li><i class="fas fa-check"></i> Integração completa</li>
+                        <li><i class="fas fa-check"></i> Relatórios executivos</li>
+                        <li><i class="fas fa-check"></i> API completa</li>
+                        <li><i class="fas fa-check"></i> Suporte dedicado 24/7</li>
+                        <li><i class="fas fa-check"></i> Treinamento on-site</li>
+                    </ul>
+                    <button class="btn btn-outline" onclick="openContactModal('enterprise')">
+                        Falar com Especialista
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Pronto para Transformar sua Gestão de Resíduos?</h2>
+                <p>Entre em contato conosco e descubra como o SmartTrash pode revolucionar sua empresa.</p>
+                <div class="cta-buttons">
+                    <button class="btn btn-primary btn-large" onclick="openContactModal()">
+                        <i class="fas fa-rocket"></i>
+                        Solicitar Demonstração
+                    </button>
+                    <button class="btn btn-outline btn-large" onclick="window.location.href='login.html'">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Fazer Login
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content large">
+            <span class="close">&times;</span>
+            <h2>Solicitar Demonstração</h2>
+            <p>Preencha o formulário abaixo e nossa equipe comercial entrará em contato para agendar uma demonstração personalizada.</p>
+            
+            <form id="demoForm" class="demo-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nomeEmpresa">Nome da Empresa</label>
+                        <input type="text" id="nomeEmpresa" name="empresa" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="segmento">Segmento</label>
+                        <select id="segmento" name="segmento" required>
+                            <option value="">Selecione...</option>
+                            <option value="varejo">Varejo</option>
+                            <option value="hospitalidade">Hospitalidade</option>
+                            <option value="corporativo">Corporativo</option>
+                            <option value="industrial">Industrial</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nomeContato">Nome do Contato</label>
+                        <input type="text" id="nomeContato" name="nome" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="cargoContato">Cargo</label>
+                        <input type="text" id="cargoContato" name="cargo" placeholder="Ex: Gerente de Facilities" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="emailContato">E-mail Corporativo</label>
+                        <input type="email" id="emailContato" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="telefoneContato">Telefone</label>
+                        <input type="tel" id="telefoneContato" name="telefone" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="numeroUnidades">Número de Unidades/Filiais</label>
+                        <input type="number" id="numeroUnidades" name="unidades" placeholder="Ex: 5" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="planoInteresse">Plano de Interesse</label>
+                        <select id="planoInteresse" name="plano">
+                            <option value="">Não sei ainda</option>
+                            <option value="starter">Starter</option>
+                            <option value="professional">Professional</option>
+                            <option value="enterprise">Enterprise</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="necessidades">Principais Necessidades</label>
+                    <textarea id="necessidades" name="necessidades" rows="3" placeholder="Descreva suas principais necessidades e desafios atuais com gestão de resíduos..."></textarea>
+                </div>
+                
+                <div class="form-group checkbox-group">
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="aceiteTermos" required>
+                        <span class="checkmark"></span>
+                        Aceito receber comunicações comerciais da SmartTrash
+                    </label>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-paper-plane"></i>
+                    Solicitar Demonstração
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <img src="logo-smarttrash.svg" alt="SmartTrash" class="footer-logo">
+                        <span class="footer-brand-text">SmartTrash</span>
+                    </div>
+                    <p>Revolucionando a gestão de resíduos com tecnologia IoT inteligente.</p>
+                    <div class="footer-contact">
+                        <p><i class="fas fa-envelope"></i> smarttrashdevs@gmail.com</p>
+                        <p><i class="fas fa-phone"></i> (75) 98182-9675</p>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Soluções</h4>
+                    <ul>
+                        <li><a href="gestores.html">Para Gestores</a></li>
+                        <li><a href="empresas.html">Para Empresas</a></li>
+                        <li><a href="gestao-condominial.html">Gestão Condominial</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Empresa</h4>
+                    <ul>
+                        <li><a href="#sobre">Sobre Nós</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                        <li><a href="#carreiras">Carreiras</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Suporte</h4>
+                    <ul>
+                        <li><a href="#documentacao">Documentação</a></li>
+                        <li><a href="#api">API</a></li>
+                        <li><a href="#status">Status do Sistema</a></li>
+                        <li><a href="login.html">Portal do Cliente</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 SmartTrash. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tab functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const tabPanes = document.querySelectorAll('.tab-pane');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // Remove active class from all buttons and panes
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabPanes.forEach(pane => pane.classList.remove('active'));
+                    
+                    // Add active class to clicked button and corresponding pane
+                    this.classList.add('active');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+
+            // Modal functionality
+            const modal = document.getElementById('contactModal');
+            const closeBtn = document.querySelector('.close');
+            const demoForm = document.getElementById('demoForm');
+
+            closeBtn.addEventListener('click', function() {
+                modal.style.display = 'none';
+                // Restaurar barra de rolagem
+                document.body.style.overflowY = 'auto';
+            });
+
+            window.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                    // Restaurar barra de rolagem
+                document.body.style.overflowY = 'auto';
+                }
+            });
+
+            // Demo form submission
+            if (demoForm) {
+                demoForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const submitBtn = this.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.innerHTML;
+                    
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+                    submitBtn.disabled = true;
+                    
+                    setTimeout(() => {
+                        submitBtn.innerHTML = '<i class="fas fa-check"></i> Solicitação Enviada!';
+                        
+                        setTimeout(() => {
+                            modal.style.display = 'none';
+                            // Restaurar barra de rolagem
+                document.body.style.overflowY = 'auto';
+                            showSuccessMessage('Solicitação enviada com sucesso! Nossa equipe entrará em contato em até 24 horas.');
+                            
+                            // Reset form
+                            demoForm.reset();
+                            submitBtn.innerHTML = originalText;
+                            submitBtn.disabled = false;
+                        }, 2000);
+                    }, 2000);
+                });
+            }
+        });
+
+        // Global functions
+        function openContactModal(plan = '') {
+            const modal = document.getElementById('contactModal');
+            const planoSelect = document.getElementById('planoInteresse');
+            
+            if (plan && planoSelect) {
+                planoSelect.value = plan;
+            }
+            
+            modal.style.display = 'block';
+            // Manter barra de rolagem visível
+            document.body.style.overflowY = 'scroll';
+        }
+
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function showSuccessMessage(message) {
+            // Create message element
+            const messageEl = document.createElement('div');
+            messageEl.className = 'message-toast success';
+            messageEl.innerHTML = `
+                <div class="message-content">
+                    <i class="fas fa-check-circle"></i>
+                    <span>${message}</span>
+                </div>
+                <button class="message-close" onclick="this.parentElement.remove()">
+                    <i class="fas fa-times"></i>
+                </button>
+            `;
+            
+            document.body.appendChild(messageEl);
+            
+            setTimeout(() => {
+                if (messageEl.parentElement) {
+                    messageEl.remove();
+                }
+            }, 5000);
+        }
+
+        // Mobile menu toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if (navToggle) {
+            navToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                this.classList.toggle('active');
+            });
+        }
+    </script>
+</body>
+</html>

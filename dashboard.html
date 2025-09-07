@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Controle - SmartTrash</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="dashboard-page">
+    <!-- Header -->
+    <header class="dashboard-header">
+        <div class="header-left">
+            <img src="logo-smarttrash.svg" alt="SmartTrash" class="header-logo">
+            <div class="header-info">
+                <h1>SmartTrash</h1>
+                <span class="header-subtitle">Painel de Controle</span>
+            </div>
+        </div>
+        
+        <div class="header-right">
+            <div class="notifications">
+                <button class="notification-btn" onclick="toggleNotifications()">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-count" id="notificationCount">0</span>
+                </button>
+                <div class="notifications-dropdown" id="notificationsDropdown">
+                    <div class="notifications-header">
+                        <h4>Notificações</h4>
+                        <button onclick="markAllAsRead()">Marcar todas como lidas</button>
+                    </div>
+                    <div class="notifications-list" id="notificationsList">
+                        <p class="no-notifications">Nenhuma notificação</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="user-menu">
+                <div class="user-info">
+                    <span class="user-name">Usuário Demo</span>
+                    <span class="user-role">gestor - SmartTrash</span>
+                </div>
+                <div class="user-avatar" onclick="toggleUserMenu()">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="user-dropdown" id="userDropdown">
+                    <a href="#profile"><i class="fas fa-user"></i> Perfil</a>
+                    <a href="#settings"><i class="fas fa-cog"></i> Configurações</a>
+                    <a href="index.html"><i class="fas fa-home"></i> Voltar ao Site</a>
+                    <a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Sair</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="nav-item active" data-section="dashboard">
+                        <a href="#dashboard" onclick="showSection('dashboard')">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" data-section="containers">
+                        <a href="#containers" onclick="showSection('containers')">
+                            <i class="fas fa-trash"></i>
+                            <span>Contêineres</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" data-section="collections">
+                        <a href="#collections" onclick="showSection('collections')">
+                            <i class="fas fa-truck"></i>
+                            <span>Coletas</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" data-section="reports">
+                        <a href="#reports" onclick="showSection('reports')">
+                            <i class="fas fa-chart-bar"></i>
+                            <span>Relatórios</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" data-section="alerts">
+                        <a href="#alerts" onclick="showSection('alerts')">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <span>Alertas</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" data-section="residents">
+                        <a href="#residents" onclick="showSection('residents')">
+                            <i class="fas fa-users"></i>
+                            <span>Moradores</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" data-section="settings">
+                        <a href="#settings" onclick="showSection('settings')">
+                            <i class="fas fa-cog"></i>
+                            <span>Configurações</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Dashboard Section -->
+            <section id="dashboard-section" class="content-section active">
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card green">
+                        <div class="stat-icon">
+                            <i class="fas fa-trash"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-number" data-stat="sensors">12</div>
+                            <div class="stat-label">Contêineres Ativos</div>
+                            <div class="stat-change positive">+2 este mês</div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card blue">
+                        <div class="stat-icon">
+                            <i class="fas fa-percentage"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-number" data-stat="avg-level">68%</div>
+                            <div class="stat-label">Nível Médio</div>
+                            <div class="stat-change neutral">Normal</div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card orange">
+                        <div class="stat-icon">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-number" data-stat="collections">24</div>
+                            <div class="stat-label">Coletas este Mês</div>
+                            <div class="stat-change negative">-15% vs mês anterior</div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card purple">
+                        <div class="stat-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-number">R$ 2.840</div>
+                            <div class="stat-label">Economia Mensal</div>
+                            <div class="stat-change positive">+22% vs tradicional</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts Row -->
+                <div class="charts-row">
+                    <!-- Level Chart -->
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h3>Nível dos Contêineres</h3>
+                            <div class="chart-controls">
+                                <button class="chart-btn active" data-period="today">Hoje</button>
+                                <button class="chart-btn" data-period="7days">7 dias</button>
+                                <button class="chart-btn" data-period="30days">30 dias</button>
+                            </div>
+                        </div>
+                        <div class="chart-content">
+                            <canvas id="levelsChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Collections Chart -->
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h3>Coletas por Semana</h3>
+                        </div>
+                        <div class="chart-content">
+                            <canvas id="collectionsChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Containers Status -->
+                <div class="containers-status">
+                    <div class="section-header">
+                        <h3>Status dos Contêineres</h3>
+                        <button class="btn btn-primary" onclick="addContainer()">
+                            <i class="fas fa-plus"></i>
+                            Adicionar Contêiner
+                        </button>
+                    </div>
+                    <div class="containers-grid" id="containersGrid">
+                        <!-- Containers will be loaded here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Containers Section -->
+            <section id="containers-section" class="content-section">
+                <div class="section-header">
+                    <h2>Gerenciamento de Contêineres</h2>
+                    <button class="btn btn-primary" onclick="addContainer()">
+                        <i class="fas fa-plus"></i>
+                        Novo Contêiner
+                    </button>
+                </div>
+                
+                <div class="containers-table">
+                    <table id="containersTable">
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Localização</th>
+                                <th>Nível</th>
+                                <th>Status</th>
+                                <th>Bateria</th>
+                                <th>Última Leitura</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="containersTableBody">
+                            <!-- Data will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Collections Section -->
+            <section id="collections-section" class="content-section">
+                <div class="section-header">
+                    <h2>Histórico de Coletas</h2>
+                    <button class="btn btn-primary" onclick="scheduleCollection()">
+                        <i class="fas fa-calendar-plus"></i>
+                        Agendar Coleta
+                    </button>
+                </div>
+                
+                <div class="collections-filters">
+                    <input type="date" id="dateFrom" class="form-input">
+                    <input type="date" id="dateTo" class="form-input">
+                    <select id="statusFilter" class="form-select">
+                        <option value="">Todos os Status</option>
+                        <option value="scheduled">Agendada</option>
+                        <option value="in_progress">Em Andamento</option>
+                        <option value="completed">Concluída</option>
+                        <option value="cancelled">Cancelada</option>
+                    </select>
+                    <button class="btn btn-secondary" onclick="filterCollections()">Filtrar</button>
+                </div>
+
+                <div class="collections-table">
+                    <table id="collectionsTable">
+                        <thead>
+                            <tr>
+                                <th>Data</th>
+                                <th>Contêiner</th>
+                                <th>Empresa</th>
+                                <th>Nível Antes</th>
+                                <th>Status</th>
+                                <th>Custo</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="collectionsTableBody">
+                            <!-- Data will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Reports Section -->
+            <section id="reports-section" class="content-section">
+                <div class="section-header">
+                    <h2>Relatórios</h2>
+                    <button class="btn btn-primary" onclick="generateReport()">
+                        <i class="fas fa-file-pdf"></i>
+                        Gerar Relatório
+                    </button>
+                </div>
+                
+                <div class="reports-grid">
+                    <div class="report-card">
+                        <h4>Relatório Mensal</h4>
+                        <p>Estatísticas completas do mês atual</p>
+                        <button class="btn btn-outline" onclick="viewMonthlyReport()">Ver Relatório</button>
+                    </div>
+                    
+                    <div class="report-card">
+                        <h4>Economia de Custos</h4>
+                        <p>Comparativo com método tradicional</p>
+                        <button class="btn btn-outline" onclick="viewSavingsReport()">Ver Economia</button>
+                    </div>
+                    
+                    <div class="report-card">
+                        <h4>Performance dos Sensores</h4>
+                        <p>Análise de funcionamento dos sensores</p>
+                        <button class="btn btn-outline" onclick="viewSensorsReport()">Ver Performance</button>
+                    </div>
+                </div>
+
+                <div class="report-content" id="reportContent">
+                    <!-- Report content will be loaded here -->
+                </div>
+            </section>
+
+            <!-- Alerts Section -->
+            <section id="alerts-section" class="content-section">
+                <div class="section-header">
+                    <h2>Central de Alertas</h2>
+                    <button class="btn btn-primary" onclick="configureAlerts()">
+                        <i class="fas fa-cog"></i>
+                        Configurar Alertas
+                    </button>
+                </div>
+                
+                <div class="alerts-filters">
+                    <select id="severityFilter" class="form-select">
+                        <option value="">Todas as Severidades</option>
+                        <option value="critical">Crítico</option>
+                        <option value="high">Alto</option>
+                        <option value="medium">Médio</option>
+                        <option value="low">Baixo</option>
+                    </select>
+                    <select id="alertStatusFilter" class="form-select">
+                        <option value="active">Ativos</option>
+                        <option value="resolved">Resolvidos</option>
+                        <option value="all">Todos</option>
+                    </select>
+                    <button class="btn btn-secondary" onclick="filterAlerts()">Filtrar</button>
+                </div>
+
+                <div class="alerts-list" id="alertsList">
+                    <!-- Alerts will be loaded here -->
+                </div>
+            </section>
+
+            <!-- Residents Section -->
+            <section id="residents-section" class="content-section">
+                <div class="section-header">
+                    <h2>Comunicação com Moradores</h2>
+                    <button class="btn btn-primary" onclick="sendBroadcast()">
+                        <i class="fas fa-bullhorn"></i>
+                        Enviar Comunicado
+                    </button>
+                </div>
+                
+                <div class="residents-stats">
+                    <div class="resident-stat">
+                        <h4>Total de Moradores</h4>
+                        <span class="stat-number">156</span>
+                    </div>
+                    <div class="resident-stat">
+                        <h4>WhatsApp Cadastrados</h4>
+                        <span class="stat-number">142</span>
+                    </div>
+                    <div class="resident-stat">
+                        <h4>Mensagens Enviadas (Mês)</h4>
+                        <span class="stat-number">89</span>
+                    </div>
+                </div>
+
+                <div class="communication-history">
+                    <h3>Histórico de Comunicações</h3>
+                    <div class="messages-list" id="messagesList">
+                        <!-- Messages will be loaded here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section id="settings-section" class="content-section">
+                <div class="section-header">
+                    <h2>Configurações do Sistema</h2>
+                </div>
+                
+                <div class="settings-grid">
+                    <div class="settings-card">
+                        <h4>Alertas</h4>
+                        <div class="setting-item">
+                            <label>Nível crítico (%)</label>
+                            <input type="number" id="criticalLevel" value="85" min="0" max="100">
+                        </div>
+                        <div class="setting-item">
+                            <label>Nível de atenção (%)</label>
+                            <input type="number" id="warningLevel" value="70" min="0" max="100">
+                        </div>
+                        <button class="btn btn-primary" onclick="saveAlertSettings()">Salvar</button>
+                    </div>
+                    
+                    <div class="settings-card">
+                        <h4>Notificações</h4>
+                        <div class="setting-item">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="emailNotifications" checked>
+                                <span>Notificações por E-mail</span>
+                            </label>
+                        </div>
+                        <div class="setting-item">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="whatsappNotifications" checked>
+                                <span>Notificações por WhatsApp</span>
+                            </label>
+                        </div>
+                        <button class="btn btn-primary" onclick="saveNotificationSettings()">Salvar</button>
+                    </div>
+                    
+                    <div class="settings-card">
+                        <h4>Sistema</h4>
+                        <div class="setting-item">
+                            <label>Intervalo de leitura (minutos)</label>
+                            <select id="readingInterval">
+                                <option value="5">5 minutos</option>
+                                <option value="10">10 minutos</option>
+                                <option value="15" selected>15 minutos</option>
+                                <option value="30">30 minutos</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-primary" onclick="saveSystemSettings()">Salvar</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modals -->
+    <!-- Add Container Modal -->
+    <div id="addContainerModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('addContainerModal')">&times;</span>
+            <h2>Adicionar Novo Contêiner</h2>
+            <form id="addContainerForm">
+                <div class="form-group">
+                    <label for="containerCode">Código do Sensor</label>
+                    <input type="text" id="containerCode" name="code" required>
+                </div>
+                <div class="form-group">
+                    <label for="containerLocation">Localização</label>
+                    <input type="text" id="containerLocation" name="location" required>
+                </div>
+                <div class="form-group">
+                    <label for="containerType">Tipo de Resíduo</label>
+                    <select id="containerType" name="type" required>
+                        <option value="organic">Orgânico</option>
+                        <option value="recyclable">Reciclável</option>
+                        <option value="general">Geral</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeModal('addContainerModal')">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Adicionar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Carregando...</p>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>

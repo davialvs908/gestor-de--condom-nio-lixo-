@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - SmartTrash</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="login-page">
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-brand">
+                    <img src="logo-smarttrash.svg" alt="SmartTrash" class="logo">
+                    <span class="brand-text">SmartTrash</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="index.html#solucao">Solução</a></li>
+                    <li><a href="gestores.html">Para Gestores</a></li>
+                    <li><a href="empresas.html">Para Empresas</a></li>
+                    <li><a href="gestao-condominial.html">Gestão Condominial</a></li>
+                    <li><a href="login.html" class="active">Login</a></li>
+                </ul>
+                <div class="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Login Section -->
+    <section class="login-section">
+        <div class="login-container">
+            <div class="login-content">
+                <!-- Login Form Side -->
+                <div class="login-form-side">
+                    <div class="login-form-container">
+                        <div class="login-header-text">
+                            <h1>Acesse seu Painel</h1>
+                            <p>Faça login para gerenciar seus contêineres inteligentes</p>
+                        </div>
+
+                        <form id="loginForm" class="login-form">
+                            <div class="form-group">
+                                <label for="email">E-mail</label>
+                                <div class="input-container">
+                                    <i class="fas fa-envelope"></i>
+                                    <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="password">Senha</label>
+                                <div class="input-container">
+                                    <i class="fas fa-lock"></i>
+                                    <input type="password" id="password" name="password" placeholder="••••••••" required>
+                                    <button type="button" class="toggle-password" onclick="togglePassword()">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="form-options">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" id="remember">
+                                    <span class="checkmark"></span>
+                                    Lembrar de mim
+                                </label>
+                                <a href="#" class="forgot-password">Esqueceu a senha?</a>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-login">
+                                <i class="fas fa-sign-in-alt"></i>
+                                Entrar no Painel
+                            </button>
+
+                            <div class="login-divider">
+                                <span>ou</span>
+                            </div>
+
+                <div class="demo-access">
+                    <p>Quer testar nossa plataforma?</p>
+                    <button type="button" class="btn btn-demo" onclick="loginDemo()">
+                        <i class="fas fa-play-circle"></i>
+                        Acesso Demo
+                    </button>
+                    <div class="contact-help" style="margin-top: 1rem; font-size: 0.875rem; color: #6b7280;">
+                        <p>Precisa de ajuda? Entre em contato:</p>
+                        <p><i class="fas fa-envelope"></i> smarttrashdevs@gmail.com</p>
+                        <p><i class="fas fa-phone"></i> (75) 98182-9675</p>
+                    </div>
+                </div>
+                        </form>
+
+                        <div class="login-footer">
+                            <p>Não tem uma conta? <a href="#" onclick="showRegisterForm()">Cadastre-se aqui</a></p>
+                            <p class="alternative-link">Ou <a href="#" onclick="openContactModal()">solicite acesso</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Info Side -->
+                <div class="login-info-side">
+                    <div class="info-content">
+                        <div class="info-header">
+                            <h2>Gestão Inteligente ao seu Alcance</h2>
+                            <p>Monitore, controle e otimize a coleta de resíduos do seu condomínio em tempo real.</p>
+                        </div>
+
+                        <div class="info-features">
+                            <div class="info-feature">
+                                <div class="feature-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <div class="feature-text">
+                                    <h3>Dashboard em Tempo Real</h3>
+                                    <p>Visualize o status de todos os contêineres instantaneamente</p>
+                                </div>
+                            </div>
+
+                            <div class="info-feature">
+                                <div class="feature-icon">
+                                    <i class="fas fa-bell"></i>
+                                </div>
+                                <div class="feature-text">
+                                    <h3>Alertas Inteligentes</h3>
+                                    <p>Receba notificações automáticas quando necessário</p>
+                                </div>
+                            </div>
+
+                            <div class="info-feature">
+                                <div class="feature-icon">
+                                    <i class="fas fa-mobile-alt"></i>
+                                </div>
+                                <div class="feature-text">
+                                    <h3>Acesso Mobile</h3>
+                                    <p>Gerencie tudo pelo seu smartphone ou tablet</p>
+                                </div>
+                            </div>
+
+                            <div class="info-feature">
+                                <div class="feature-icon">
+                                    <i class="fas fa-chart-bar"></i>
+                                </div>
+                                <div class="feature-text">
+                                    <h3>Relatórios Detalhados</h3>
+                                    <p>Análises completas para otimizar custos e operações</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">40%</span>
+                                <span class="stat-label">Redução de Custos</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">85%</span>
+                                <span class="stat-label">Menos Reclamações</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">24/7</span>
+                                <span class="stat-label">Monitoramento</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content large">
+            <span class="close">&times;</span>
+            <h2>Cadastro SmartTrash</h2>
+            <p>Crie sua conta e comece a gerenciar seus contêineres inteligentes.</p>
+            
+            <form id="registerForm" class="register-form">
+                <div class="form-section">
+                    <h3><i class="fas fa-user"></i> Dados Pessoais</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="registerName">Nome Completo</label>
+                            <input type="text" id="registerName" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="registerEmail">E-mail</label>
+                            <input type="email" id="registerEmail" name="email" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="registerPhone">Telefone</label>
+                            <input type="tel" id="registerPhone" name="phone" placeholder="(75) 99999-9999" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="registerUserType">Tipo de Usuário</label>
+                            <select id="registerUserType" name="user_type" required>
+                                <option value="">Selecione...</option>
+                                <option value="gestor">Gestor de Condomínio</option>
+                                <option value="sindico">Síndico</option>
+                                <option value="administradora">Administradora</option>
+                                <option value="empresa_coleta">Empresa de Coleta</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="registerPassword">Senha</label>
+                            <div class="input-container">
+                                <input type="password" id="registerPassword" name="password" placeholder="Mínimo 6 caracteres" required>
+                                <button type="button" class="toggle-password" onclick="toggleRegisterPassword()">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="registerPasswordConfirm">Confirmar Senha</label>
+                            <div class="input-container">
+                                <input type="password" id="registerPasswordConfirm" name="password_confirm" placeholder="Digite a senha novamente" required>
+                                <button type="button" class="toggle-password" onclick="toggleRegisterPasswordConfirm()">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-section" id="condominiumSection">
+                    <h3><i class="fas fa-building"></i> Dados do Condomínio (Opcional)</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="registerCondominiumName">Nome do Condomínio</label>
+                            <input type="text" id="registerCondominiumName" name="condominium_name" placeholder="Ex: Residencial Jardins">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="registerUnitsCount">Número de Unidades</label>
+                            <input type="number" id="registerUnitsCount" name="units_count" placeholder="Ex: 120" min="1">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="registerAddress">Endereço Completo</label>
+                        <textarea id="registerAddress" name="address" rows="2" placeholder="Rua, número, bairro, cidade..."></textarea>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="registerTerms" required>
+                            <span class="checkmark"></span>
+                            Aceito os <a href="#" target="_blank">Termos de Uso</a> e <a href="#" target="_blank">Política de Privacidade</a>
+                        </label>
+                    </div>
+                    
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="registerNews">
+                            <span class="checkmark"></span>
+                            Quero receber novidades e atualizações por e-mail
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="register-buttons">
+                    <button type="button" class="btn btn-outline" onclick="showLoginForm()">
+                        <i class="fas fa-arrow-left"></i>
+                        Voltar ao Login
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-user-plus"></i>
+                        Criar Conta
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Solicitar Acesso</h2>
+            <p>Preencha o formulário abaixo e nossa equipe entrará em contato para configurar seu acesso.</p>
+            
+            <form id="accessForm" class="access-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nome">Nome Completo</label>
+                        <input type="text" id="nome" name="nome" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="emailContact">E-mail</label>
+                        <input type="email" id="emailContact" name="email" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="telefone">Telefone</label>
+                        <input type="tel" id="telefone" name="telefone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="cargo">Cargo</label>
+                        <select id="cargo" name="cargo" required>
+                            <option value="">Selecione...</option>
+                            <option value="gestor">Gestor de Condomínio</option>
+                            <option value="sindico">Síndico</option>
+                            <option value="administradora">Administradora</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="condominio">Nome do Condomínio</label>
+                    <input type="text" id="condominio" name="condominio" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="unidades">Número de Unidades</label>
+                    <input type="number" id="unidades" name="unidades" placeholder="Ex: 50" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="mensagem">Mensagem (opcional)</label>
+                    <textarea id="mensagem" name="mensagem" rows="3" placeholder="Conte-nos mais sobre suas necessidades..."></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Enviar Solicitação</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <p>Verificando credenciais...</p>
+        </div>
+    </div>
+
+    <script src="login.js"></script>
+</body>
+</html>

@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software de Gestão Condominial - SmartTrash</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-brand">
+                    <img src="logo-smarttrash.svg" alt="SmartTrash" class="logo">
+                    <span class="brand-text">SmartTrash</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="index.html#solucao">Solução</a></li>
+                    <li><a href="gestores.html">Para Gestores</a></li>
+                    <li><a href="empresas.html">Para Empresas</a></li>
+                    <li><a href="gestao-condominial.html" class="active">Gestão Condominial</a></li>
+                    <li><a href="login.html" class="nav-login-btn">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </a></li>
+                </ul>
+                <div class="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-management">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-badge">
+                        <i class="fas fa-plus"></i>
+                        <span>Produto Complementar</span>
+                    </div>
+                    <h1 class="hero-title">
+                        Software Completo de 
+                        <span class="highlight">Gestão Condominial</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        Além da gestão inteligente de resíduos, oferecemos uma plataforma completa para administração 
+                        financeira, controle de moradores, manutenção e muito mais. Tudo integrado em um só sistema.
+                    </p>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Digital</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">24/7</span>
+                            <span class="stat-label">Acesso Online</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">+50</span>
+                            <span class="stat-label">Funcionalidades</span>
+                        </div>
+                    </div>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary btn-large" onclick="window.location.href='login.html'">
+                            <i class="fas fa-sign-in-alt"></i>
+                            Acessar Sistema
+                        </button>
+                        <button class="btn btn-outline btn-large" onclick="openManagementDemo()">
+                            <i class="fas fa-desktop"></i>
+                            Ver Demonstração
+                        </button>
+                        <a href="#modulos" class="btn btn-secondary">
+                            <i class="fas fa-list"></i>
+                            Conhecer Módulos
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="management-preview">
+                        <div class="software-mockup">
+                            <div class="mockup-header">
+                                <div class="mockup-tabs">
+                                    <div class="tab active">Financeiro</div>
+                                    <div class="tab">Moradores</div>
+                                    <div class="tab">Manutenção</div>
+                                </div>
+                            </div>
+                            <div class="mockup-content">
+                                <div class="dashboard-widgets">
+                                    <div class="widget financial">
+                                        <div class="widget-header">
+                                            <i class="fas fa-chart-pie"></i>
+                                            <span>Receitas vs Despesas</span>
+                                        </div>
+                                        <div class="widget-chart">
+                                            <div class="chart-donut">
+                                                <div class="donut-segment green" style="--percentage: 65%"></div>
+                                                <div class="donut-center">
+                                                    <span class="donut-value">R$ 45.2k</span>
+                                                    <span class="donut-label">Saldo</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="widget residents">
+                                        <div class="widget-header">
+                                            <i class="fas fa-users"></i>
+                                            <span>Moradores</span>
+                                        </div>
+                                        <div class="widget-stats">
+                                            <div class="stat-row">
+                                                <span>Adimplentes</span>
+                                                <span class="stat-value green">87%</span>
+                                            </div>
+                                            <div class="stat-row">
+                                                <span>Inadimplentes</span>
+                                                <span class="stat-value red">13%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Integration Section -->
+    <section class="integration-section">
+        <div class="container">
+            <div class="integration-content">
+                <div class="integration-text">
+                    <h2>Integração Perfeita com SmartTrash</h2>
+                    <p>Nosso software de gestão se conecta automaticamente com o sistema SmartTrash, 
+                    criando uma solução completa para seu condomínio.</p>
+                    
+                    <div class="integration-benefits">
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="fas fa-sync-alt"></i>
+                            </div>
+                            <div class="benefit-text">
+                                <h4>Sincronização Automática</h4>
+                                <p>Custos de coleta são automaticamente lançados no sistema financeiro</p>
+                            </div>
+                        </div>
+                        
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="benefit-text">
+                                <h4>Relatórios Integrados</h4>
+                                <p>Visualize economia da SmartTrash direto nos relatórios financeiros</p>
+                            </div>
+                        </div>
+                        
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <div class="benefit-text">
+                                <h4>Comunicação Unificada</h4>
+                                <p>WhatsApp integrado para avisos financeiros e de coleta</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="integration-visual">
+                    <div class="integration-diagram">
+                        <div class="system-box smarttrash">
+                            <i class="fas fa-recycle"></i>
+                            <span>SmartTrash</span>
+                            <div class="connection-line"></div>
+                        </div>
+                        <div class="integration-hub">
+                            <i class="fas fa-cogs"></i>
+                            <span>Integração</span>
+                        </div>
+                        <div class="system-box management">
+                            <i class="fas fa-building"></i>
+                            <span>Gestão Condominial</span>
+                            <div class="connection-line"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modules Section -->
+    <section id="modulos" class="modules-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Módulos do Sistema</h2>
+                <p>Plataforma completa para gestão moderna de condomínios</p>
+            </div>
+            
+            <div class="modules-grid">
+                <div class="module-card financial">
+                    <div class="module-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3>Financeiro Completo</h3>
+                    <p>Gestão financeira profissional com controle total de receitas, despesas e inadimplência.</p>
+                    <div class="module-features">
+                        <span class="feature">✓ Contas a pagar e receber</span>
+                        <span class="feature">✓ Controle de inadimplência</span>
+                        <span class="feature">✓ Relatórios financeiros</span>
+                        <span class="feature">✓ Fluxo de caixa</span>
+                        <span class="feature">✓ Integração bancária</span>
+                    </div>
+                </div>
+
+                <div class="module-card residents">
+                    <div class="module-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Gestão de Moradores</h3>
+                    <p>Cadastro completo de moradores, proprietários e inquilinos com histórico detalhado.</p>
+                    <div class="module-features">
+                        <span class="feature">✓ Cadastro de moradores</span>
+                        <span class="feature">✓ Controle de veículos</span>
+                        <span class="feature">✓ Histórico de ocorrências</span>
+                        <span class="feature">✓ Comunicados automáticos</span>
+                        <span class="feature">✓ Portal do morador</span>
+                    </div>
+                </div>
+
+                <div class="module-card maintenance">
+                    <div class="module-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Manutenção Preventiva</h3>
+                    <p>Controle completo de manutenções, fornecedores e ordens de serviço.</p>
+                    <div class="module-features">
+                        <span class="feature">✓ Ordens de serviço</span>
+                        <span class="feature">✓ Controle de fornecedores</span>
+                        <span class="feature">✓ Manutenção preventiva</span>
+                        <span class="feature">✓ Estoque de materiais</span>
+                        <span class="feature">✓ Histórico de reparos</span>
+                    </div>
+                </div>
+
+                <div class="module-card assembly">
+                    <div class="module-icon">
+                        <i class="fas fa-vote-yea"></i>
+                    </div>
+                    <h3>Assembleias Digitais</h3>
+                    <p>Organize assembleias online com votação digital e atas automáticas.</p>
+                    <div class="module-features">
+                        <span class="feature">✓ Convocação automática</span>
+                        <span class="feature">✓ Votação online</span>
+                        <span class="feature">✓ Atas digitais</span>
+                        <span class="feature">✓ Controle de presença</span>
+                        <span class="feature">✓ Arquivo de decisões</span>
+                    </div>
+                </div>
+
+                <div class="module-card security">
+                    <div class="module-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Portaria Virtual</h3>
+                    <p>Sistema completo de controle de acesso e segurança do condomínio.</p>
+                    <div class="module-features">
+                        <span class="feature">✓ Controle de visitantes</span>
+                        <span class="feature">✓ Liberação de acesso</span>
+                        <span class="feature">✓ Câmeras integradas</span>
+                        <span class="feature">✓ Relatório de ocorrências</span>
+                        <span class="feature">✓ App para porteiros</span>
+                    </div>
+                </div>
+
+                <div class="module-card communication">
+                    <div class="module-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3>Comunicação Integrada</h3>
+                    <p>WhatsApp, e-mail e SMS automáticos para comunicação eficiente.</p>
+                    <div class="module-features">
+                        <span class="feature">✓ WhatsApp Business</span>
+                        <span class="feature">✓ E-mail marketing</span>
+                        <span class="feature">✓ SMS automático</span>
+                        <span class="feature">✓ Comunicados gerais</span>
+                        <span class="feature">✓ Enquetes e pesquisas</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Plans -->
+    <section class="pricing-plans-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Planos de Gestão Condominial</h2>
+                <p>Escolha o plano ideal para o tamanho do seu condomínio</p>
+            </div>
+            
+            <div class="plans-grid">
+                <div class="plan-card basic">
+                    <div class="plan-header">
+                        <h3>Básico</h3>
+                        <div class="plan-price">
+                            <span class="price">R$ 150</span>
+                            <span class="period">por mês</span>
+                        </div>
+                        <p class="plan-description">Ideal para condomínios até 50 unidades</p>
+                    </div>
+                    <div class="plan-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Gestão Financeira</li>
+                            <li><i class="fas fa-check"></i> Cadastro de Moradores</li>
+                            <li><i class="fas fa-check"></i> Comunicação WhatsApp</li>
+                            <li><i class="fas fa-check"></i> Relatórios Básicos</li>
+                            <li><i class="fas fa-check"></i> Suporte por E-mail</li>
+                            <li class="unavailable"><i class="fas fa-times"></i> Portaria Virtual</li>
+                            <li class="unavailable"><i class="fas fa-times"></i> Assembleias Digitais</li>
+                        </ul>
+                    </div>
+                    <button class="btn btn-outline">Escolher Plano</button>
+                </div>
+
+                <div class="plan-card professional featured">
+                    <div class="plan-badge">Mais Popular</div>
+                    <div class="plan-header">
+                        <h3>Profissional</h3>
+                        <div class="plan-price">
+                            <span class="price">R$ 280</span>
+                            <span class="period">por mês</span>
+                        </div>
+                        <p class="plan-description">Perfeito para condomínios de 50 a 200 unidades</p>
+                    </div>
+                    <div class="plan-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Tudo do Plano Básico</li>
+                            <li><i class="fas fa-check"></i> Manutenção Preventiva</li>
+                            <li><i class="fas fa-check"></i> Portaria Virtual</li>
+                            <li><i class="fas fa-check"></i> Assembleias Digitais</li>
+                            <li><i class="fas fa-check"></i> Integração Bancária</li>
+                            <li><i class="fas fa-check"></i> App Móvel</li>
+                            <li><i class="fas fa-check"></i> Suporte Prioritário</li>
+                        </ul>
+                    </div>
+                    <button class="btn btn-primary">Escolher Plano</button>
+                </div>
+
+                <div class="plan-card enterprise">
+                    <div class="plan-header">
+                        <h3>Empresarial</h3>
+                        <div class="plan-price">
+                            <span class="price">R$ 450</span>
+                            <span class="period">por mês</span>
+                        </div>
+                        <p class="plan-description">Para condomínios acima de 200 unidades</p>
+                    </div>
+                    <div class="plan-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Tudo do Plano Profissional</li>
+                            <li><i class="fas fa-check"></i> Múltiplos Condomínios</li>
+                            <li><i class="fas fa-check"></i> Relatórios Avançados</li>
+                            <li><i class="fas fa-check"></i> API Personalizada</li>
+                            <li><i class="fas fa-check"></i> Treinamento Presencial</li>
+                            <li><i class="fas fa-check"></i> Suporte 24/7</li>
+                            <li><i class="fas fa-check"></i> Account Manager</li>
+                        </ul>
+                    </div>
+                    <button class="btn btn-outline">Falar com Vendas</button>
+                </div>
+            </div>
+            
+            <div class="combo-offer">
+                <div class="combo-card">
+                    <div class="combo-header">
+                        <i class="fas fa-gift"></i>
+                        <h3>Combo SmartTrash + Gestão</h3>
+                    </div>
+                    <div class="combo-content">
+                        <p>Contrate os dois sistemas juntos e ganhe <strong>20% de desconto</strong> no plano de gestão!</p>
+                        <div class="combo-pricing">
+                            <div class="combo-item">
+                                <span>SmartTrash:</span>
+                                <strong>R$ 200/mês</strong>
+                            </div>
+                            <div class="combo-item">
+                                <span>Gestão Profissional:</span>
+                                <strong>R$ 224/mês</strong>
+                                <small>(R$ 56 de desconto)</small>
+                            </div>
+                            <div class="combo-total">
+                                <span>Total Combo:</span>
+                                <strong>R$ 424/mês</strong>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary btn-large">
+                            <i class="fas fa-star"></i>
+                            Quero o Combo Completo
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Pronto para Modernizar sua Gestão?</h2>
+                <p>Junte-se aos condomínios que já escolheram a eficiência da gestão digital integrada</p>
+                <div class="cta-buttons">
+                    <button class="btn btn-primary btn-large" onclick="window.location.href='login.html'">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Fazer Login
+                    </button>
+                    <button class="btn btn-outline btn-large" onclick="openManagementDemo()">
+                        <i class="fas fa-desktop"></i>
+                        Solicitar Demonstração
+                    </button>
+                    <a href="https://wa.me/5575981829675?text=Olá! Gostaria de saber mais sobre o Software de Gestão Condominial integrado com SmartTrash." 
+                       class="btn btn-secondary btn-large" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        Falar com Especialista
+                    </a>
+                </div>
+                <div class="cta-guarantee">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>30 dias grátis • Migração de dados incluída • Treinamento completo</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <img src="logo-smarttrash.svg" alt="SmartTrash" class="footer-logo">
+                        <h3>SmartTrash</h3>
+                        <p>Inovação em Gestão de Resíduos e Administração Condominial</p>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Soluções</h4>
+                    <ul>
+                        <li><a href="gestores.html">Para Gestores</a></li>
+                        <li><a href="empresas.html">Para Empresas</a></li>
+                        <li><a href="gestao-condominial.html">Gestão Condominial</a></li>
+                        <li><a href="index.html#solucao">Tecnologia</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Empresa</h4>
+                    <ul>
+                        <li><a href="index.html#sobre">Sobre Nós</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> smarttrashdevs@gmail.com</p>
+                        <p><i class="fas fa-phone"></i> (75) 98182-9675</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Feira de Santana, BA</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/5575981829675?text=Olá! Gostaria de saber mais sobre a SmartTrash." target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 SmartTrash. Todos os direitos reservados.</p>
+                <p>Eficiência hoje, crescimento amanhã.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Management Demo Modal -->
+    <div id="managementDemoModal" class="modal">
+        <div class="modal-content large">
+            <span class="close">&times;</span>
+            <h2>Demonstração - Software de Gestão Condominial</h2>
+            <p>Preencha seus dados e nossa equipe fará uma demonstração personalizada da plataforma completa.</p>
+            
+            <form id="managementDemoForm" class="demo-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nomeGestao">Nome Completo</label>
+                        <input type="text" id="nomeGestao" name="nome" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="emailGestao">E-mail</label>
+                        <input type="email" id="emailGestao" name="email" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="telefoneGestao">Telefone</label>
+                        <input type="tel" id="telefoneGestao" name="telefone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="cargoGestao">Cargo/Função</label>
+                        <select id="cargoGestao" name="cargo" required>
+                            <option value="">Selecione...</option>
+                            <option value="sindico">Síndico</option>
+                            <option value="gestor">Gestor de Condomínio</option>
+                            <option value="administradora">Administradora</option>
+                            <option value="zelador">Zelador/Porteiro</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="condominioGestao">Nome do Condomínio</label>
+                    <input type="text" id="condominioGestao" name="condominio" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="unidadesGestao">Número de Unidades</label>
+                        <input type="number" id="unidadesGestao" name="unidades" placeholder="Ex: 80" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="interesseModulo">Módulo de Maior Interesse</label>
+                        <select id="interesseModulo" name="modulo_interesse">
+                            <option value="">Selecione...</option>
+                            <option value="financeiro">Financeiro</option>
+                            <option value="moradores">Gestão de Moradores</option>
+                            <option value="manutencao">Manutenção</option>
+                            <option value="portaria">Portaria Virtual</option>
+                            <option value="assembleia">Assembleias Digitais</option>
+                            <option value="completo">Sistema Completo</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="sistemaAtual">Sistema Atual (se houver)</label>
+                    <input type="text" id="sistemaAtual" name="sistema_atual" placeholder="Ex: Planilhas Excel, outro software...">
+                </div>
+                
+                <div class="form-group">
+                    <label for="desafiosGestao">Principais Desafios na Gestão</label>
+                    <textarea id="desafiosGestao" name="desafios" rows="3" placeholder="Ex: Inadimplência alta, comunicação difícil, controle manual..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="interesseSmartTrash" name="interesse_smarttrash">
+                        <span class="checkmark"></span>
+                        Tenho interesse também no SmartTrash (gestão de resíduos)
+                    </label>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Agendar Demonstração</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/5575981829675?text=Olá! Gostaria de saber mais sobre o Software de Gestão Condominial da SmartTrash." 
+       class="whatsapp-float" 
+       target="_blank" 
+       title="Fale conosco no WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="script.js"></script>
+    <script>
+        // Management Demo Modal
+        function openManagementDemo() {
+            const modal = document.getElementById('managementDemoModal');
+            if (modal) {
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        // Management Demo Form
+        document.addEventListener('DOMContentLoaded', function() {
+            const managementForm = document.getElementById('managementDemoForm');
+            
+            if (managementForm) {
+                managementForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const submitBtn = this.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.innerHTML;
+                    
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+                    submitBtn.disabled = true;
+                    
+                    setTimeout(() => {
+                        submitBtn.innerHTML = '<i class="fas fa-check"></i> Demonstração Agendada!';
+                        
+                        setTimeout(() => {
+                            const modal = this.closest('.modal');
+                            closeModal(modal);
+                            showSuccessMessage('Demonstração agendada! Nossa equipe entrará em contato em até 2 horas para agendar o melhor horário.');
+                            
+                            // Reset form
+                            this.reset();
+                            submitBtn.innerHTML = originalText;
+                            submitBtn.disabled = false;
+                        }, 2000);
+                    }, 2000);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

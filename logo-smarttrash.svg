@@ -1,0 +1,74 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Circle -->
+  <circle cx="100" cy="100" r="95" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/>
+  
+  <!-- Trash Bin Container -->
+  <g transform="translate(100, 100)">
+    <!-- Bin Body -->
+    <path d="M-25 -10 L-20 40 L20 40 L25 -10 Z" fill="#2563eb" stroke="#1d4ed8" stroke-width="2"/>
+    
+    <!-- Bin Lid -->
+    <ellipse cx="0" cy="-12" rx="30" ry="8" fill="#1d4ed8" stroke="#1e40af" stroke-width="2"/>
+    
+    <!-- Bin Handle -->
+    <path d="M-35 -12 Q-35 -20 -25 -20 L25 -20 Q35 -20 35 -12" 
+          fill="none" stroke="#1e40af" stroke-width="3" stroke-linecap="round"/>
+    
+    <!-- Recycling Symbol in Green Circle -->
+    <circle cx="0" cy="10" r="18" fill="#10b981"/>
+    
+    <!-- Recycling Arrows -->
+    <g transform="translate(0, 10)" fill="white" stroke="white" stroke-width="1.5">
+      <!-- Arrow 1 -->
+      <path d="M-8 -12 L-2 -6 L-8 0 M-8 -6 L8 -6" stroke-linecap="round" fill="none"/>
+      <!-- Arrow 2 -->
+      <path d="M12 -2 L6 4 L0 -2 M6 -2 L6 14" stroke-linecap="round" fill="none"/>
+      <!-- Arrow 3 -->
+      <path d="M8 12 L2 6 L8 0 M8 6 L-8 6" stroke-linecap="round" fill="none"/>
+    </g>
+    
+    <!-- Smart Sensor Indicator -->
+    <circle cx="15" cy="-25" r="4" fill="#ef4444">
+      <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- WiFi Signal Lines -->
+    <g transform="translate(15, -25)" stroke="#ef4444" stroke-width="1.5" fill="none">
+      <path d="M-8 -8 Q0 -12 8 -8" opacity="0.6">
+        <animate attributeName="opacity" values="0.6;0.2;0.6" dur="2s" repeatCount="indefinite"/>
+      </path>
+      <path d="M-12 -12 Q0 -18 12 -12" opacity="0.4">
+        <animate attributeName="opacity" values="0.4;0.1;0.4" dur="2s" repeatCount="indefinite" begin="0.5s"/>
+      </path>
+      <path d="M-16 -16 Q0 -24 16 -16" opacity="0.2">
+        <animate attributeName="opacity" values="0.2;0.05;0.2" dur="2s" repeatCount="indefinite" begin="1s"/>
+      </path>
+    </g>
+    
+    <!-- Data Flow Dots -->
+    <g>
+      <circle cx="-40" cy="0" r="2" fill="#2563eb">
+        <animate attributeName="cx" values="-40;40" dur="3s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0;1;0" dur="3s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="-40" cy="5" r="2" fill="#10b981">
+        <animate attributeName="cx" values="-40;40" dur="3s" repeatCount="indefinite" begin="1s"/>
+        <animate attributeName="opacity" values="0;1;0" dur="3s" repeatCount="indefinite" begin="1s"/>
+      </circle>
+      <circle cx="-40" cy="-5" r="2" fill="#f59e0b">
+        <animate attributeName="cx" values="-40;40" dur="3s" repeatCount="indefinite" begin="2s"/>
+        <animate attributeName="opacity" values="0;1;0" dur="3s" repeatCount="indefinite" begin="2s"/>
+      </circle>
+    </g>
+  </g>
+  
+  <!-- Text -->
+  <text x="100" y="170" text-anchor="middle" font-family="Inter, sans-serif" font-size="18" font-weight="700" fill="#1f2937">
+    SMART
+  </text>
+  <text x="100" y="190" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="400" fill="#6b7280">
+    Innovative Waste Management
+  </text>
+</svg>
+
+

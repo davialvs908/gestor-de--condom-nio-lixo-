@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartTrash - Gestão Inteligente de Resíduos</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-brand">
+                    <img src="logo-smarttrash.svg" alt="SmartTrash" class="logo">
+                    <span class="brand-text">SmartTrash</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#solucao">Solução</a></li>
+                    <li><a href="gestores.html">Para Gestores</a></li>
+                    <li><a href="empresas.html">Para Empresas</a></li>
+                    <li><a href="gestao-condominial.html">Gestão Condominial</a></li>
+                    <li><a href="login.html" class="nav-login-btn">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </a></li>
+                </ul>
+                <div class="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        O Fim do Lixo Acumulado.<br>
+                        <span class="highlight">O Começo da Gestão Inteligente.</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        A SmartTrash transforma a gestão de resíduos em condomínios com tecnologia IoT, 
+                        eliminando o mau cheiro, reduzindo custos e devolvendo a tranquilidade para gestores e moradores.
+                    </p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary" onclick="openDemoModal()">
+                            <i class="fas fa-play-circle"></i>
+                            Solicite uma Demonstração Gratuita
+                        </button>
+                        <button class="btn btn-secondary" onclick="scrollToSection('solucao')">
+                            <i class="fas fa-info-circle"></i>
+                            Conheça a Tecnologia
+                        </button>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="hero-graphic">
+                        <div class="smart-bin">
+                            <i class="fas fa-trash-alt"></i>
+                            <div class="sensor-indicator"></div>
+                        </div>
+                        <div class="data-flow">
+                            <div class="data-point"></div>
+                            <div class="data-point"></div>
+                            <div class="data-point"></div>
+                        </div>
+                        <div class="dashboard-preview">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem-section">
+        <div class="container">
+            <div class="problem-content">
+                <div class="problem-image">
+                    <div class="problem-visual">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <div class="overflow-indicator"></div>
+                    </div>
+                </div>
+                <div class="problem-text">
+                    <h2>Sua Gestão é Refém do Lixo?</h2>
+                    <p>
+                        Reclamações constantes de moradores, mau cheiro nas áreas comuns, custos imprevisíveis 
+                        com coletas extras e a desvalorização do patrimônio. Se essa é a sua realidade, você não está sozinho.
+                    </p>
+                    <p>
+                        O modelo de coleta tradicional, baseado em cronogramas fixos, simplesmente não funciona mais 
+                        para a dinâmica dos condomínios modernos, gerando estresse profissional e minando sua reputação.
+                    </p>
+                    <div class="problem-stats">
+                        <div class="stat">
+                            <span class="stat-number">85%</span>
+                            <span class="stat-label">dos gestores relatam reclamações sobre lixo</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">40%</span>
+                            <span class="stat-label">aumento nos custos com coletas extras</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="solucao" class="solution-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Apresentando SmartTrash: Inteligência e Controle na Ponta dos Dedos</h2>
+                <p>Nossa plataforma integrada é a única solução no mercado que combina hardware e software para uma gestão completa e proativa.</p>
+            </div>
+            
+            <div class="solution-features">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h3>Sensores Inteligentes</h3>
+                    <p>Monitoram o nível dos contêineres 24/7, garantindo que a coleta seja feita apenas quando necessário.</p>
+                    <div class="feature-benefits">
+                        <span class="benefit">Monitoramento 24/7</span>
+                        <span class="benefit">Alertas em tempo real</span>
+                        <span class="benefit">Instalação rápida</span>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>Painel de Controle Web</h3>
+                    <p>Tenha uma visão completa da operação com dados em tempo real, alertas automáticos e relatórios para otimizar custos.</p>
+                    <div class="feature-benefits">
+                        <span class="benefit">Dados em tempo real</span>
+                        <span class="benefit">Relatórios detalhados</span>
+                        <span class="benefit">Otimização de custos</span>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h3>Comunicação Automatizada</h3>
+                    <p>Um chatbot via WhatsApp mantém os moradores informados e permite o registro de ocorrências, filtrando as reclamações.</p>
+                    <div class="feature-benefits">
+                        <span class="benefit">WhatsApp integrado</span>
+                        <span class="benefit">Comunicação automática</span>
+                        <span class="benefit">Redução de reclamações</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it Works Section -->
+    <section class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>Como Funciona</h2>
+                <p>Processo simplificado em 3 etapas</p>
+            </div>
+            
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Instalação Rápida</h3>
+                        <p>Nossos técnicos instalam os sensores IoT nos contêineres do seu condomínio de forma rápida e sem transtornos.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Monitoramento em Tempo Real</h3>
+                        <p>Os sensores medem o volume e enviam os dados para a nossa plataforma na nuvem.</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Ação Inteligente</h3>
+                        <p>O sistema alerta automaticamente a empresa de coleta quando o nível ideal é atingido e mantém você e os moradores informados.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Pronto para Transformar sua Gestão?</h2>
+                <p>Junte-se aos gestores que já escolheram a eficiência e tranquilidade da SmartTrash</p>
+                <button class="btn btn-primary btn-large" onclick="openDemoModal()">
+                    Solicitar Demonstração Gratuita
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <img src="logo-smarttrash.svg" alt="SmartTrash" class="footer-logo">
+                        <h3>SmartTrash</h3>
+                        <p>Inovação em Gestão de Resíduos para Condomínios</p>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Soluções</h4>
+                    <ul>
+                        <li><a href="gestores.html">Para Gestores</a></li>
+                        <li><a href="empresas.html">Para Empresas</a></li>
+                        <li><a href="#solucao">Tecnologia</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Empresa</h4>
+                    <ul>
+                        <li><a href="#sobre">Sobre Nós</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> smarttrashdevs@gmail.com</p>
+                        <p><i class="fas fa-phone"></i> (75) 98182-9675</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Feira de Santana, BA</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/5575981829675?text=Olá! Gostaria de saber mais sobre a SmartTrash." target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 SmartTrash. Todos os direitos reservados.</p>
+                <p>Eficiência hoje, crescimento amanhã.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Demo Modal -->
+    <div id="demoModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Solicite sua Demonstração Gratuita</h2>
+            <form id="demoForm" class="demo-form">
+                <div class="form-group">
+                    <label for="nome">Nome Completo</label>
+                    <input type="text" id="nome" name="nome" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="telefone">Telefone</label>
+                    <input type="tel" id="telefone" name="telefone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="cargo">Cargo/Função</label>
+                    <select id="cargo" name="cargo" required>
+                        <option value="">Selecione...</option>
+                        <option value="gestor">Gestor de Condomínio</option>
+                        <option value="sindico">Síndico</option>
+                        <option value="administradora">Administradora</option>
+                        <option value="empresa-coleta">Empresa de Coleta</option>
+                        <option value="outro">Outro</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="condominio">Nome do Condomínio/Empresa</label>
+                    <input type="text" id="condominio" name="condominio" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="unidades">Número de Unidades/Tamanho</label>
+                    <input type="text" id="unidades" name="unidades" placeholder="Ex: 50 apartamentos">
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Agendar Demonstração</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/5575981829675?text=Olá! Gostaria de saber mais sobre a SmartTrash." 
+       class="whatsapp-float" 
+       target="_blank" 
+       title="Fale conosco no WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>

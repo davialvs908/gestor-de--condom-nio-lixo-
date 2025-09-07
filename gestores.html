@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Gestores de Condomínios - SmartTrash</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-brand">
+                    <img src="logo-smarttrash.svg" alt="SmartTrash" class="logo">
+                    <span class="brand-text">SmartTrash</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="index.html#solucao">Solução</a></li>
+                    <li><a href="gestores.html" class="active">Para Gestores</a></li>
+                    <li><a href="empresas.html">Para Empresas</a></li>
+                    <li><a href="gestao-condominial.html">Gestão Condominial</a></li>
+                    <li><a href="login.html" class="nav-login-btn">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </a></li>
+                </ul>
+                <div class="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section for Managers -->
+    <section class="hero-managers">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        De Gestor Reativo a 
+                        <span class="highlight">Síndico Estratégico</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        Troque o estresse diário de "apagar incêndios" pela tranquilidade de uma operação otimizada. 
+                        Com a SmartTrash, você ganha controle total e reconhecimento como um gestor inovador.
+                    </p>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">85%</span>
+                            <span class="stat-label">Redução nas Reclamações</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">40%</span>
+                            <span class="stat-label">Economia nos Custos</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">24/7</span>
+                            <span class="stat-label">Monitoramento</span>
+                        </div>
+                    </div>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary btn-large" onclick="openDemoModal()">
+                            <i class="fas fa-calendar-check"></i>
+                            Agendar Demonstração
+                        </button>
+                        <a href="login.html" class="btn btn-secondary">
+                            <i class="fas fa-eye"></i>
+                            Ver Demo Online
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="manager-graphic">
+                        <div class="dashboard-mockup">
+                            <div class="mockup-header">
+                                <div class="mockup-dots">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                                <span class="mockup-title">Painel SmartTrash</span>
+                            </div>
+                            <div class="mockup-content">
+                                <div class="mockup-stats">
+                                    <div class="mockup-stat green">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>12 Contêineres OK</span>
+                                    </div>
+                                    <div class="mockup-stat orange">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                        <span>2 Precisam Coleta</span>
+                                    </div>
+                                </div>
+                                <div class="mockup-chart">
+                                    <div class="chart-bars">
+                                        <div class="bar" style="height: 60%"></div>
+                                        <div class="bar" style="height: 80%"></div>
+                                        <div class="bar" style="height: 45%"></div>
+                                        <div class="bar" style="height: 90%"></div>
+                                        <div class="bar" style="height: 30%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Com a SmartTrash, você ganha:</h2>
+                <p>Transforme sua gestão e seja reconhecido como um líder inovador</p>
+            </div>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h3>Fim das Reclamações</h3>
+                    <p>Elimine a causa raiz do mau cheiro e do lixo acumulado, restaurando a satisfação dos moradores e sua tranquilidade profissional.</p>
+                    <div class="benefit-details">
+                        <span class="detail-item">✓ Alertas preventivos antes do transbordamento</span>
+                        <span class="detail-item">✓ Comunicação automática com moradores</span>
+                        <span class="detail-item">✓ Histórico completo para prestação de contas</span>
+                    </div>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-piggy-bank"></i>
+                    </div>
+                    <h3>Redução de Custos do Condomínio</h3>
+                    <p>Elimine coletas desnecessárias e reduza a taxa condominial. Apresente economia real aos condôminos com relatórios transparentes de gastos otimizados.</p>
+                    <div class="benefit-details">
+                        <span class="detail-item">✓ Redução de até 40% nos custos de coleta</span>
+                        <span class="detail-item">✓ Relatórios mensais de economia para assembleia</span>
+                        <span class="detail-item">✓ Controle total sobre gastos com limpeza</span>
+                    </div>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>Valorização do Condomínio</h3>
+                    <p>Transforme áreas comuns em espaços mais agradáveis, livre de mau cheiro e sujeira. Aumente a satisfação dos moradores e o valor dos imóveis.</p>
+                    <div class="benefit-details">
+                        <span class="detail-item">✓ Áreas comuns sempre limpas e organizadas</span>
+                        <span class="detail-item">✓ Maior satisfação e bem-estar dos moradores</span>
+                        <span class="detail-item">✓ Condomínio moderno e tecnológico</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problems vs Solutions -->
+    <section class="comparison-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Antes vs Depois da SmartTrash</h2>
+                <p>Veja a transformação que nossa solução proporciona</p>
+            </div>
+            
+            <div class="comparison-grid">
+                <div class="comparison-side before">
+                    <h3><i class="fas fa-times-circle"></i> Gestão Tradicional</h3>
+                    <div class="comparison-items">
+                        <div class="comparison-item">
+                            <i class="fas fa-nose text-red"></i>
+                            <span>Mau cheiro constante nas áreas comuns</span>
+                        </div>
+                        <div class="comparison-item">
+                            <i class="fas fa-trash-alt text-red"></i>
+                            <span>Lixeiras transbordando nos finais de semana</span>
+                        </div>
+                        <div class="comparison-item">
+                            <i class="fas fa-phone-alt text-red"></i>
+                            <span>Ligações de reclamação toda semana</span>
+                        </div>
+                        <div class="comparison-item">
+                            <i class="fas fa-money-bill text-red"></i>
+                            <span>Taxa condominial alta por coletas extras</span>
+                        </div>
+                        <div class="comparison-item">
+                            <i class="fas fa-bug text-red"></i>
+                            <span>Pragas e insetos atraídos pelo lixo</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comparison-side after">
+                    <h3><i class="fas fa-check-circle"></i> Com SmartTrash</h3>
+                    <div class="comparison-items">
+                        <div class="comparison-item">
+                            <i class="fas fa-air-freshener text-green"></i>
+                            <span>Áreas comuns sempre limpas e sem odor</span>
+                        </div>
+                        <div class="comparison-item">
+                            <i class="fas fa-check-circle text-green"></i>
+                            <span>Contêineres coletados antes de transbordar</span>
+                        </div>
+                        <div class="comparison-item">
+                            <i class="fas fa-mobile-alt text-green"></i>
+                            <span>Moradores informados via WhatsApp automático</span>
+                        </div>
+                        <div class="comparison-item">
+                            <i class="fas fa-chart-line-down text-green"></i>
+                            <span>Redução real na taxa condominial</span>
+                        </div>
+                        <div class="comparison-item">
+                            <i class="fas fa-shield-alt text-green"></i>
+                            <span>Ambiente saudável e livre de pragas</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Investimento SmartTrash</h2>
+                <p>Preços transparentes e sem surpresas para seu condomínio</p>
+            </div>
+            
+            <div class="pricing-card-main">
+                <div class="pricing-header">
+                    <h3>Plano Completo SmartTrash</h3>
+                    <div class="pricing-badge">Mais Escolhido</div>
+                </div>
+                
+                <div class="pricing-breakdown">
+                    <div class="price-item">
+                        <div class="price-icon">
+                            <i class="fas fa-microchip"></i>
+                        </div>
+                        <div class="price-details">
+                            <h4>Instalação de Sensores</h4>
+                            <p>Sensores IoT instalados nos contêineres</p>
+                            <div class="price-value">R$ 50 <span>por sensor</span></div>
+                        </div>
+                    </div>
+                    
+                    <div class="price-item">
+                        <div class="price-icon">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <div class="price-details">
+                            <h4>Plataforma Completa</h4>
+                            <p>Dashboard, alertas, relatórios e WhatsApp</p>
+                            <div class="price-value">R$ 200 <span>por mês</span></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="pricing-example">
+                    <h4>Exemplo para seu condomínio:</h4>
+                    <div class="example-calc">
+                        <div class="calc-line">
+                            <span>Condomínio com 50 apartamentos (5 sensores)</span>
+                        </div>
+                        <div class="calc-line">
+                            <span>Instalação única:</span>
+                            <strong>R$ 250</strong>
+                        </div>
+                        <div class="calc-line">
+                            <span>Mensalidade:</span>
+                            <strong>R$ 200</strong>
+                        </div>
+                        <div class="calc-line total">
+                            <span>Custo total no 1º mês:</span>
+                            <strong>R$ 450</strong>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="pricing-benefits">
+                    <h4>Incluído no plano:</h4>
+                    <div class="benefits-list">
+                        <span class="benefit">✓ Instalação e configuração</span>
+                        <span class="benefit">✓ Treinamento da equipe</span>
+                        <span class="benefit">✓ Suporte técnico ilimitado</span>
+                        <span class="benefit">✓ Atualizações automáticas</span>
+                        <span class="benefit">✓ Relatórios mensais</span>
+                        <span class="benefit">✓ WhatsApp automático</span>
+                    </div>
+                </div>
+                
+                <div class="pricing-guarantee">
+                    <i class="fas fa-shield-alt"></i>
+                    <div>
+                        <strong>Garantia de Satisfação</strong>
+                        <p>30 dias para testar. Se não economizar, devolvemos seu dinheiro.</p>
+                    </div>
+                </div>
+                
+                <button class="btn btn-primary btn-large" onclick="openDemoModal()">
+                    <i class="fas fa-calculator"></i>
+                    Calcular Economia do Meu Condomínio
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROI Calculator -->
+    <section class="roi-section">
+        <div class="container">
+            <div class="roi-content">
+                <div class="roi-text">
+                    <h2>Calcule sua Economia</h2>
+                    <p>Veja quanto você pode economizar com a SmartTrash no seu condomínio</p>
+                    
+                    <div class="roi-calculator">
+                        <div class="calc-input">
+                            <label for="units">Número de Unidades:</label>
+                            <input type="number" id="units" placeholder="Ex: 50" min="10" max="1000" onchange="calculateROI()">
+                        </div>
+                        
+                        <div class="calc-input">
+                            <label for="collections">Coletas por Semana:</label>
+                            <input type="number" id="collections" placeholder="Ex: 3" min="1" max="7" onchange="calculateROI()">
+                        </div>
+                        
+                        <div class="calc-input">
+                            <label for="cost">Custo por Coleta (R$):</label>
+                            <input type="number" id="cost" placeholder="Ex: 150" min="50" max="1000" onchange="calculateROI()">
+                        </div>
+                    </div>
+                    
+                    <div class="roi-results" id="roiResults" style="display: none;">
+                        <div class="result-item">
+                            <span class="result-label">Economia Mensal:</span>
+                            <span class="result-value" id="monthlySavings">R$ 0</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">Economia Anual:</span>
+                            <span class="result-value" id="yearlySavings">R$ 0</span>
+                        </div>
+                        <div class="result-item highlight">
+                            <span class="result-label">ROI em 12 meses:</span>
+                            <span class="result-value" id="roiPercentage">0%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="roi-visual">
+                    <div class="savings-chart">
+                        <div class="chart-title">Economia Acumulada</div>
+                        <div class="chart-container">
+                            <div class="savings-bar">
+                                <div class="savings-fill" id="savingsFill"></div>
+                                <span class="savings-text" id="savingsText">Preencha os dados</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Pronto para se Tornar um Gestor Estratégico?</h2>
+                <p>Agende uma demonstração personalizada e veja como a SmartTrash pode transformar sua gestão</p>
+                <div class="cta-buttons">
+                    <button class="btn btn-primary btn-large" onclick="openDemoModal()">
+                        <i class="fas fa-calendar-check"></i>
+                        Agendar Demonstração Gratuita
+                    </button>
+                    <a href="https://wa.me/5575981829675?text=Olá! Sou gestor de condomínio e gostaria de saber mais sobre a SmartTrash." 
+                       class="btn btn-secondary btn-large" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        Falar no WhatsApp
+                    </a>
+                </div>
+                <div class="cta-guarantee">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Demonstração sem compromisso • Suporte completo • ROI garantido</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <img src="logo-smarttrash.svg" alt="SmartTrash" class="footer-logo">
+                        <h3>SmartTrash</h3>
+                        <p>Inovação em Gestão de Resíduos para Condomínios</p>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Soluções</h4>
+                    <ul>
+                        <li><a href="gestores.html">Para Gestores</a></li>
+                        <li><a href="empresas.html">Para Empresas</a></li>
+                        <li><a href="index.html#solucao">Tecnologia</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Empresa</h4>
+                    <ul>
+                        <li><a href="index.html#sobre">Sobre Nós</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> smarttrashdevs@gmail.com</p>
+                        <p><i class="fas fa-phone"></i> (75) 98182-9675</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Feira de Santana, BA</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/5575981829675?text=Olá! Gostaria de saber mais sobre a SmartTrash." target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 SmartTrash. Todos os direitos reservados.</p>
+                <p>Eficiência hoje, crescimento amanhã.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Demo Modal -->
+    <div id="demoModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Agende sua Demonstração Personalizada</h2>
+            <p>Preencha seus dados e nossa equipe entrará em contato para agendar uma apresentação exclusiva da SmartTrash para seu condomínio.</p>
+            
+            <form id="demoForm" class="demo-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nome">Nome Completo</label>
+                        <input type="text" id="nome" name="nome" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="telefone">Telefone</label>
+                        <input type="tel" id="telefone" name="telefone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="cargo">Cargo/Função</label>
+                        <select id="cargo" name="cargo" required>
+                            <option value="">Selecione...</option>
+                            <option value="gestor">Gestor de Condomínio</option>
+                            <option value="sindico">Síndico</option>
+                            <option value="administradora">Administradora</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="condominio">Nome do Condomínio</label>
+                    <input type="text" id="condominio" name="condominio" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="unidades">Número de Unidades</label>
+                        <input type="number" id="unidades" name="unidades" placeholder="Ex: 50" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="coletas">Coletas por Semana</label>
+                        <input type="number" id="coletas" name="coletas" placeholder="Ex: 3" min="1" max="7">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="desafios">Principais Desafios (opcional)</label>
+                    <textarea id="desafios" name="desafios" rows="3" placeholder="Ex: Reclamações constantes, custos altos, mau cheiro..."></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Agendar Demonstração</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/5575981829675?text=Olá! Sou gestor de condomínio e gostaria de saber mais sobre a SmartTrash." 
+       class="whatsapp-float" 
+       target="_blank" 
+       title="Fale conosco no WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="script.js"></script>
+    <script>
+        // ROI Calculator
+        function calculateROI() {
+            const units = parseInt(document.getElementById('units').value) || 0;
+            const collections = parseInt(document.getElementById('collections').value) || 0;
+            const cost = parseFloat(document.getElementById('cost').value) || 0;
+            
+            if (units > 0 && collections > 0 && cost > 0) {
+                // Calculate current monthly cost
+                const currentMonthlyCost = collections * 4 * cost; // 4 weeks per month
+                
+                // SmartTrash reduces collections by 35% on average
+                const optimizedCollections = collections * 0.65;
+                const newMonthlyCost = optimizedCollections * 4 * cost;
+                
+                // Add SmartTrash monthly cost (R$200 base + R$50 installation per sensor)
+                const smartTrashCost = 200; // R$200 monthly base cost
+                const installationCost = Math.ceil(units / 10) * 50; // R$50 per sensor (1 sensor per 10 units)
+                const totalNewCost = newMonthlyCost + smartTrashCost;
+                
+                const monthlySavings = Math.max(0, currentMonthlyCost - totalNewCost);
+                const yearlySavings = monthlySavings * 12;
+                const totalFirstYearCost = (smartTrashCost * 12) + installationCost;
+                const roi = ((yearlySavings - totalFirstYearCost) / totalFirstYearCost) * 100;
+                
+                // Update results
+                document.getElementById('monthlySavings').textContent = `R$ ${monthlySavings.toLocaleString('pt-BR')}`;
+                document.getElementById('yearlySavings').textContent = `R$ ${yearlySavings.toLocaleString('pt-BR')}`;
+                document.getElementById('roiPercentage').textContent = `${Math.round(roi)}%`;
+                
+                // Update visual
+                const savingsFill = document.getElementById('savingsFill');
+                const savingsText = document.getElementById('savingsText');
+                const percentage = Math.min(100, (monthlySavings / 5000) * 100); // Max R$5000 for full bar
+                
+                savingsFill.style.width = percentage + '%';
+                savingsText.textContent = `R$ ${monthlySavings.toLocaleString('pt-BR')}/mês`;
+                
+                document.getElementById('roiResults').style.display = 'block';
+            } else {
+                document.getElementById('roiResults').style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

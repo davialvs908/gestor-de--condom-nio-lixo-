@@ -1,0 +1,29 @@
+# GitHub Pages Configuration
+title: SmartTrash - Sistema de Gestão Inteligente de Resíduos
+description: Solução IoT completa para gestão de resíduos em condomínios e empresas
+url: "https://seu-usuario.github.io"
+baseurl: "/smarttrash"
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+
+# Exclude files from build
+exclude:
+  - "*.py"
+  - "*.db"
+  - "*.sql"
+  - requirements.txt
+  - Procfile
+  - runtime.txt
+  - README.md
+  - .gitignore
+
+# Include files
+include:
+  - "*.html"
+  - "*.css"
+  - "*.js"
+  - "*.svg"
+  - "*.png"
+  - "*.jpg"
