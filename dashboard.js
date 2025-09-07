@@ -74,15 +74,12 @@ async function loadRealDashboardData(userData) {
             // Atualizar interface com dados reais
             updateDashboardWithRealData(data);
             
-            // Mostrar indicador de dados reais
-            showDataSourceIndicator('real');
+            // Dados reais carregados com sucesso
         } else {
-            console.warn('⚠️ Erro ao carregar dados reais, usando modo demo');
-            showDataSourceIndicator('demo');
+            console.warn('⚠️ Erro ao carregar dados reais');
         }
     } catch (error) {
         console.error('❌ Erro na API do dashboard:', error);
-        showDataSourceIndicator('demo');
     }
 }
 
@@ -221,38 +218,7 @@ function createAlertItem(alert) {
     return item;
 }
 
-// Show data source indicator
-function showDataSourceIndicator(source) {
-    // Remove existing indicators
-    const existingIndicator = document.querySelector('.data-source-indicator');
-    if (existingIndicator) {
-        existingIndicator.remove();
-    }
-    
-    // Create new indicator
-    const indicator = document.createElement('div');
-    indicator.className = 'data-source-indicator';
-    
-    if (source === 'real') {
-        indicator.innerHTML = `
-            <i class="fas fa-database"></i>
-            <span>Dados Reais (SQLite)</span>
-        `;
-        indicator.classList.add('real-data');
-    } else {
-        indicator.innerHTML = `
-            <i class="fas fa-play-circle"></i>
-            <span>Modo Demonstração</span>
-        `;
-        indicator.classList.add('demo-data');
-    }
-    
-    // Add to header
-    const header = document.querySelector('.dashboard-header');
-    if (header) {
-        header.appendChild(indicator);
-    }
-}
+// Data source indicator removed for cleaner interface
 
 // Format datetime for display
 function formatDateTime(timestamp) {
@@ -333,6 +299,19 @@ function loadDemoData() {
 function initializeDashboard() {
     // Show dashboard section by default
     showSection('dashboard');
+    
+    // Load saved settings
+    loadSettings();
+    
+    // Load notifications
+    updateNotificationCount();
+    loadNotifications();
+    
+    // Start data refresh timer
+    restartDataRefresh();
+    
+    // Create demo notifications if none exist
+    createDemoNotifications();
     
     // Initialize chart containers
     setTimeout(() => {
@@ -532,13 +511,7 @@ function updateCollectionsChart(data) {
     });
 }
 
-// Event handlers
-function toggleNotifications() {
-    const dropdown = document.getElementById('notificationsDropdown');
-    if (dropdown) {
-        dropdown.classList.toggle('show');
-    }
-}
+// Event handlers - toggleNotifications moved below with enhanced functionality
 
 function toggleUserMenu() {
     const dropdown = document.getElementById('userDropdown');
@@ -548,8 +521,68 @@ function toggleUserMenu() {
 }
 
 function logout() {
-    sessionStorage.removeItem('smarttrash_user');
-    window.location.href = 'login.html';
+    // Confirmação com modal personalizado
+    const modal = document.createElement('div');
+    modal.className = 'modal logout-modal';
+    modal.style.display = 'block';
+    modal.innerHTML = `
+        <div class="modal-content logout-content">
+            <div class="logout-header">
+                <i class="fas fa-sign-out-alt"></i>
+                <h3>Confirmar Logout</h3>
+            </div>
+            <p>Tem certeza que deseja sair do sistema?</p>
+            <div class="logout-buttons">
+                <button class="btn btn-outline" onclick="closeLogoutModal()">
+                    <i class="fas fa-times"></i> Cancelar
+                </button>
+                <button class="btn btn-primary" onclick="confirmLogout()">
+                    <i class="fas fa-sign-out-alt"></i> Sair
+                </button>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(modal);
+    
+    // Bloquear scroll do body
+    document.body.style.overflow = 'hidden';
+    
+    // Função para fechar modal
+    window.closeLogoutModal = function() {
+        modal.remove();
+        document.body.style.overflow = '';
+    };
+    
+    // Função para confirmar logout
+    window.confirmLogout = function() {
+        sessionStorage.removeItem('smarttrash_user');
+        localStorage.removeItem('smarttrash_user');
+        
+        // Mostrar mensagem de logout
+        const logoutMessage = document.createElement('div');
+        logoutMessage.className = 'logout-message';
+        logoutMessage.innerHTML = `
+            <div class="logout-message-content">
+                <i class="fas fa-check-circle"></i>
+                <span>Logout realizado com sucesso!</span>
+            </div>
+        `;
+        document.body.appendChild(logoutMessage);
+        
+        setTimeout(() => {
+            window.location.href = 'login.html';
+        }, 1000);
+    };
+    
+    // Fechar com ESC
+    const handleEscape = (e) => {
+        if (e.key === 'Escape') {
+            closeLogoutModal();
+            document.removeEventListener('keydown', handleEscape);
+        }
+    };
+    document.addEventListener('keydown', handleEscape);
 }
 
 function addContainer() {
@@ -952,12 +985,342 @@ function showMessage(message, type = 'info') {
     }, 3000);
 }
 
-// Logout function
-function logout() {
-    sessionStorage.removeItem('smarttrash_user');
-    window.location.href = 'login.html';
+// Logout function already defined above
+
+// Settings Management
+function saveAlertSettings() {
+    const criticalLevel = document.getElementById('criticalLevel').value;
+    const warningLevel = document.getElementById('warningLevel').value;
+    
+    // Validação
+    if (parseInt(criticalLevel) <= parseInt(warningLevel)) {
+        showMessage('Erro: Nível crítico deve ser maior que nível de atenção!', 'error');
+        return;
+    }
+    
+    // Salvar no localStorage
+    const settings = {
+        criticalLevel: parseInt(criticalLevel),
+        warningLevel: parseInt(warningLevel),
+        timestamp: Date.now()
+    };
+    
+    localStorage.setItem('smarttrash_alert_settings', JSON.stringify(settings));
+    
+    // Mostrar sucesso
+    showMessage('Configurações de alertas salvas com sucesso!', 'success');
+    
+    // Aplicar mudanças imediatamente nos contêineres
+    updateContainerAlerts();
+}
+
+function saveNotificationSettings() {
+    const emailNotifications = document.getElementById('emailNotifications').checked;
+    const whatsappNotifications = document.getElementById('whatsappNotifications').checked;
+    
+    const settings = {
+        email: emailNotifications,
+        whatsapp: whatsappNotifications,
+        timestamp: Date.now()
+    };
+    
+    localStorage.setItem('smarttrash_notification_settings', JSON.stringify(settings));
+    showMessage('Configurações de notificações salvas com sucesso!', 'success');
+}
+
+function saveSystemSettings() {
+    const readingInterval = document.getElementById('readingInterval').value;
+    
+    const settings = {
+        readingInterval: parseInt(readingInterval),
+        timestamp: Date.now()
+    };
+    
+    localStorage.setItem('smarttrash_system_settings', JSON.stringify(settings));
+    showMessage('Configurações do sistema salvas com sucesso!', 'success');
+    
+    // Reiniciar timer de atualização com novo intervalo
+    restartDataRefresh();
+}
+
+// Carregar configurações salvas
+function loadSettings() {
+    // Carregar configurações de alertas
+    const alertSettings = localStorage.getItem('smarttrash_alert_settings');
+    if (alertSettings) {
+        const parsed = JSON.parse(alertSettings);
+        const criticalInput = document.getElementById('criticalLevel');
+        const warningInput = document.getElementById('warningLevel');
+        
+        if (criticalInput) criticalInput.value = parsed.criticalLevel;
+        if (warningInput) warningInput.value = parsed.warningLevel;
+    }
+    
+    // Carregar configurações de notificações
+    const notificationSettings = localStorage.getItem('smarttrash_notification_settings');
+    if (notificationSettings) {
+        const parsed = JSON.parse(notificationSettings);
+        const emailInput = document.getElementById('emailNotifications');
+        const whatsappInput = document.getElementById('whatsappNotifications');
+        
+        if (emailInput) emailInput.checked = parsed.email;
+        if (whatsappInput) whatsappInput.checked = parsed.whatsapp;
+    }
+    
+    // Carregar configurações do sistema
+    const systemSettings = localStorage.getItem('smarttrash_system_settings');
+    if (systemSettings) {
+        const parsed = JSON.parse(systemSettings);
+        const intervalInput = document.getElementById('readingInterval');
+        
+        if (intervalInput) intervalInput.value = parsed.readingInterval;
+    }
+}
+
+// Aplicar configurações de alerta aos contêineres
+function updateContainerAlerts() {
+    const alertSettings = localStorage.getItem('smarttrash_alert_settings');
+    if (!alertSettings) return;
+    
+    const settings = JSON.parse(alertSettings);
+    
+    // Atualizar todos os contêineres visíveis
+    document.querySelectorAll('.container-card').forEach(card => {
+        const progressBar = card.querySelector('.progress-fill');
+        const statusBadge = card.querySelector('.status-badge');
+        
+        if (progressBar && statusBadge) {
+            const level = parseInt(progressBar.style.width);
+            
+            // Remover classes antigas
+            card.classList.remove('critical', 'warning', 'normal');
+            statusBadge.classList.remove('critical', 'warning', 'normal');
+            
+            // Aplicar novas classes baseadas nas configurações
+            if (level >= settings.criticalLevel) {
+                card.classList.add('critical');
+                statusBadge.classList.add('critical');
+                statusBadge.textContent = 'Crítico';
+            } else if (level >= settings.warningLevel) {
+                card.classList.add('warning');
+                statusBadge.classList.add('warning');
+                statusBadge.textContent = 'Atenção';
+            } else {
+                card.classList.add('normal');
+                statusBadge.classList.add('normal');
+                statusBadge.textContent = 'Normal';
+            }
+        }
+    });
+}
+
+// Reiniciar refresh de dados
+function restartDataRefresh() {
+    // Limpar timer existente se houver
+    if (window.dataRefreshTimer) {
+        clearInterval(window.dataRefreshTimer);
+    }
+    
+    const systemSettings = localStorage.getItem('smarttrash_system_settings');
+    let interval = 15; // padrão 15 minutos
+    
+    if (systemSettings) {
+        interval = JSON.parse(systemSettings).readingInterval;
+    }
+    
+    // Iniciar novo timer
+    window.dataRefreshTimer = setInterval(async () => {
+        if (currentUser) {
+            await loadRealDashboardData(currentUser);
+        }
+    }, interval * 60 * 1000); // converter para millisegundos
+}
+
+// Sistema de notificações aprimorado
+function createNotification(title, message, type = 'info') {
+    const notificationSettings = localStorage.getItem('smarttrash_notification_settings');
+    let settings = { email: true, whatsapp: true };
+    
+    if (notificationSettings) {
+        settings = JSON.parse(notificationSettings);
+    }
+    
+    // Criar notificação visual
+    const notification = {
+        id: Date.now(),
+        title: title,
+        message: message,
+        type: type,
+        timestamp: new Date().toISOString(),
+        read: false
+    };
+    
+    // Adicionar à lista de notificações
+    let notifications = JSON.parse(localStorage.getItem('smarttrash_notifications') || '[]');
+    notifications.unshift(notification);
+    
+    // Manter apenas as últimas 50 notificações
+    if (notifications.length > 50) {
+        notifications = notifications.slice(0, 50);
+    }
+    
+    localStorage.setItem('smarttrash_notifications', JSON.stringify(notifications));
+    
+    // Atualizar contador
+    updateNotificationCount();
+    
+    // Simular envio por email/WhatsApp (em produção, seria uma chamada à API)
+    if (settings.email) {
+        console.log(`📧 Email enviado: ${title} - ${message}`);
+    }
+    if (settings.whatsapp) {
+        console.log(`📱 WhatsApp enviado: ${title} - ${message}`);
+    }
+    
+    return notification;
+}
+
+// Atualizar contador de notificações
+function updateNotificationCount() {
+    const notifications = JSON.parse(localStorage.getItem('smarttrash_notifications') || '[]');
+    const unreadCount = notifications.filter(n => !n.read).length;
+    
+    const countElement = document.getElementById('notificationCount');
+    if (countElement) {
+        countElement.textContent = unreadCount;
+        countElement.style.display = unreadCount > 0 ? 'block' : 'none';
+    }
+}
+
+// Marcar todas notificações como lidas
+function markAllAsRead() {
+    const notifications = JSON.parse(localStorage.getItem('smarttrash_notifications') || '[]');
+    notifications.forEach(n => n.read = true);
+    localStorage.setItem('smarttrash_notifications', JSON.stringify(notifications));
+    
+    updateNotificationCount();
+    loadNotifications();
+}
+
+// Carregar e exibir notificações
+function loadNotifications() {
+    const notifications = JSON.parse(localStorage.getItem('smarttrash_notifications') || '[]');
+    const container = document.getElementById('notificationsList');
+    
+    if (!container) return;
+    
+    if (notifications.length === 0) {
+        container.innerHTML = '<p class="no-notifications">Nenhuma notificação</p>';
+        return;
+    }
+    
+    container.innerHTML = notifications.map(notification => {
+        const time = new Date(notification.timestamp).toLocaleString('pt-BR');
+        const typeIcon = {
+            info: 'fa-info-circle',
+            warning: 'fa-exclamation-triangle', 
+            error: 'fa-times-circle',
+            success: 'fa-check-circle'
+        };
+        
+        return `
+            <div class="notification-item ${notification.read ? 'read' : 'unread'}" data-id="${notification.id}">
+                <div class="notification-icon ${notification.type}">
+                    <i class="fas ${typeIcon[notification.type] || 'fa-info-circle'}"></i>
+                </div>
+                <div class="notification-content">
+                    <h5>${notification.title}</h5>
+                    <p>${notification.message}</p>
+                    <span class="notification-time">${time}</span>
+                </div>
+            </div>
+        `;
+    }).join('');
 }
 
 // Export functions for global access
 window.logout = logout;
 window.showMessage = showMessage;
+window.saveAlertSettings = saveAlertSettings;
+window.saveNotificationSettings = saveNotificationSettings;
+window.saveSystemSettings = saveSystemSettings;
+window.markAllAsRead = markAllAsRead;
+window.createNotification = createNotification;
+
+// Create demo notifications for professional appearance
+function createDemoNotifications() {
+    const existingNotifications = JSON.parse(localStorage.getItem('smarttrash_notifications') || '[]');
+    
+    // Only create demo notifications if none exist
+    if (existingNotifications.length === 0) {
+        const now = Date.now();
+        const demoNotifications = [
+            {
+                id: now - 5000,
+                title: 'Contêiner A3 - Nível Crítico',
+                message: 'Contêiner no Bloco A, nível 3 atingiu 95% da capacidade. Coleta urgente recomendada.',
+                type: 'error',
+                timestamp: new Date(now - 30 * 60 * 1000).toISOString(), // 30 min ago
+                read: false
+            },
+            {
+                id: now - 4000,
+                title: 'Sistema Atualizado',
+                message: 'Nova versão do SmartTrash instalada com sucesso. Melhorias na precisão dos sensores.',
+                type: 'success',
+                timestamp: new Date(now - 2 * 60 * 60 * 1000).toISOString(), // 2h ago
+                read: false
+            },
+            {
+                id: now - 3000,
+                title: 'Manutenção Programada',
+                message: 'Manutenção preventiva agendada para domingo às 08:00. Duração estimada: 2 horas.',
+                type: 'info',
+                timestamp: new Date(now - 4 * 60 * 60 * 1000).toISOString(), // 4h ago
+                read: true
+            },
+            {
+                id: now - 2000,
+                title: 'Contêiner B1 - Atenção',
+                message: 'Nível de preenchimento atingiu 75%. Monitoramento em andamento.',
+                type: 'warning',
+                timestamp: new Date(now - 6 * 60 * 60 * 1000).toISOString(), // 6h ago
+                read: true
+            },
+            {
+                id: now - 1000,
+                title: 'Relatório Mensal Disponível',
+                message: 'Relatório de desempenho de outubro está pronto para download na seção Relatórios.',
+                type: 'info',
+                timestamp: new Date(now - 24 * 60 * 60 * 1000).toISOString(), // 1 day ago
+                read: true
+            }
+        ];
+        
+        localStorage.setItem('smarttrash_notifications', JSON.stringify(demoNotifications));
+        updateNotificationCount();
+        loadNotifications();
+    }
+}
+
+// Toggle notification dropdown
+function toggleNotifications() {
+    const dropdown = document.getElementById('notificationsDropdown');
+    if (dropdown) {
+        const isVisible = dropdown.classList.contains('show');
+        
+        // Close other dropdowns
+        document.querySelectorAll('.show').forEach(element => {
+            element.classList.remove('show');
+        });
+        
+        if (!isVisible) {
+            dropdown.classList.add('show');
+            loadNotifications(); // Refresh notifications when opening
+        }
+    }
+}
+
+// Export new functions
+window.createDemoNotifications = createDemoNotifications;
+window.toggleNotifications = toggleNotifications;

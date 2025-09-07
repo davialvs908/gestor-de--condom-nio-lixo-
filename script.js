@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeModals();
     initializeScrollAnimations();
     initializeForms();
+    initializeResponsiveHelpers();
     
     // Update copyright year
     updateCopyrightYear();
@@ -449,10 +450,109 @@ function initializeLazyLoading() {
 // Initialize lazy loading
 document.addEventListener('DOMContentLoaded', initializeLazyLoading);
 
+// Responsive helpers to prevent scroll issues
+function initializeResponsiveHelpers() {
+    // Ensure viewport is properly configured
+    if (!document.querySelector('meta[name="viewport"]')) {
+        const viewport = document.createElement('meta');
+        viewport.name = 'viewport';
+        viewport.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no';
+        document.head.appendChild(viewport);
+    }
+    
+    // Prevent zoom on iOS inputs
+    const inputs = document.querySelectorAll('input, textarea, select');
+    inputs.forEach(input => {
+        if (input.style.fontSize === '' || parseFloat(input.style.fontSize) < 16) {
+            input.style.fontSize = '16px';
+        }
+    });
+    
+    // Handle orientation change
+    window.addEventListener('orientationchange', function() {
+        setTimeout(() => {
+            // Force scroll to top to prevent stuck scrolling
+            if (window.scrollY > 0) {
+                window.scrollTo(0, 0);
+            }
+            
+            // Recalculate modal positions
+            const openModal = document.querySelector('.modal[style*="block"]');
+            if (openModal) {
+                const content = openModal.querySelector('.modal-content');
+                if (content) {
+                    content.scrollTop = 0;
+                }
+            }
+        }, 100);
+    });
+    
+    // Fix iOS 100vh issues
+    function setVhProperty() {
+        let vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
+    
+    setVhProperty();
+    window.addEventListener('resize', setVhProperty);
+    
+    // Prevent body scroll when modal is open
+    const originalCloseModal = window.closeModal;
+    window.closeModal = function(modal) {
+        originalCloseModal(modal);
+        document.body.style.overflow = '';
+        document.body.style.position = '';
+        document.body.style.width = '';
+    };
+    
+    // Enhanced modal opening
+    const originalOpenDemoModal = window.openDemoModal;
+    window.openDemoModal = function() {
+        // Prevent body scroll
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        document.body.style.overflow = 'hidden';
+        document.body.style.position = 'fixed';
+        document.body.style.width = '100%';
+        document.body.style.top = `-${scrollTop}px`;
+        
+        originalOpenDemoModal();
+        
+        // Ensure modal is scrollable
+        const modal = document.getElementById('demoModal');
+        if (modal) {
+            modal.style.overflow = 'auto';
+            modal.style.webkitOverflowScrolling = 'touch';
+        }
+    };
+    
+    // Touch scroll fixes for modals
+    document.addEventListener('touchmove', function(e) {
+        const modal = e.target.closest('.modal');
+        if (modal && modal.style.display === 'block') {
+            e.stopPropagation();
+        }
+    }, { passive: false });
+}
+
+// Enhanced scroll to section
+function enhancedScrollToSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    if (section) {
+        const headerHeight = document.querySelector('.header')?.offsetHeight || 80;
+        const targetPosition = section.offsetTop - headerHeight;
+        
+        window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+        });
+    }
+}
+
 // Export functions for global access
 window.openDemoModal = openDemoModal;
 window.closeModal = closeModal;
 window.scrollToSection = scrollToSection;
+window.enhancedScrollToSection = enhancedScrollToSection;
 window.showSuccessMessage = showSuccessMessage;
 window.showErrorMessage = showErrorMessage;
 window.showInfoMessage = showInfoMessage;

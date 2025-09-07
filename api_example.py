@@ -556,17 +556,17 @@ def get_monthly_report(condominium_id):
         return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
-    print("🚀 SmartTrash API iniciando...")
-    print("📊 Dashboard: http://localhost:5000/api/dashboard/1")
-    print("🔐 Login: POST /api/login")
-    print("📝 Cadastro: POST /api/register")
+    print(">> SmartTrash API iniciando...")
+    print(">> Dashboard: http://localhost:5000/api/dashboard/1")
+    print(">> Login: POST /api/login")
+    print(">> Cadastro: POST /api/register")
     print("=" * 60)
-    print("✅ CREDENCIAIS PARA TESTE:")
-    print("   📧 demo@smarttrash.com.br / 123456")
-    print("   📧 davialves.20@gmail.com / 123456")
+    print(">> CREDENCIAIS PARA TESTE:")
+    print("   E-mail: demo@smarttrash.com.br / Senha: 123456")
+    print("   E-mail: davialves.20@gmail.com / Senha: 123456")
     print("=" * 60)
-    print("🌐 ACESSE: Abra login.html no navegador")
-    print("⚠️  PARAR: Ctrl+C")
+    print(">> ACESSE: Abra login.html no navegador")
+    print(">> PARAR: Ctrl+C")
     print()
     
     app.run(debug=False, host='127.0.0.1', port=5000, threaded=True)
