@@ -15,9 +15,10 @@ import json
 app = Flask(__name__)
 app.secret_key = os.environ.get('SECRET_KEY', 'smarttrash_secret_key_change_in_production')
 
-# Configurar CORS para desenvolvimento local
+# Configurar CORS para produção e desenvolvimento
+cors_origins = os.environ.get('CORS_ORIGINS', '*').split(',')
 CORS(app, 
-     origins=['*'],  # Permitir todas as origens
+     origins=cors_origins,  # Configurável via variável de ambiente
      methods=['GET', 'POST', 'OPTIONS'],
      allow_headers=['Content-Type', 'Authorization'],
      supports_credentials=True)
@@ -569,4 +570,8 @@ if __name__ == '__main__':
     print(">> PARAR: Ctrl+C")
     print()
     
-    app.run(debug=False, host='127.0.0.1', port=5000, threaded=True)
+    # Configurar porta para deploy
+    port = int(os.environ.get('PORT', 5000))
+    host = os.environ.get('HOST', '0.0.0.0')
+    
+    app.run(debug=False, host=host, port=port, threaded=True)

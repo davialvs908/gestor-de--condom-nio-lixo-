@@ -27,7 +27,23 @@ document.addEventListener('DOMContentLoaded', function() {
             // Detectar ambiente (local ou hospedado)
             const apiBaseUrl = getApiBaseUrl();
             
-            // Real API call to SQLite backend
+            // Se estiver hospedado (não localhost), usar modo demo direto
+            if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+                // Modo demo para ambiente hospedado
+                if (tryDemoLogin(email, password)) {
+                    hideLoading();
+                    showSuccessMessage('Login realizado com sucesso!');
+                    setTimeout(() => {
+                        window.location.href = 'dashboard.html';
+                    }, 1000);
+                } else {
+                    hideLoading();
+                    showErrorMessage('Credenciais inválidas. Use: demo@smarttrash.com.br / demo123');
+                }
+                return;
+            }
+            
+            // Real API call to SQLite backend (apenas para localhost)
             const response = await fetch(`${apiBaseUrl}/api/login`, {
                 method: 'POST',
                 headers: {
